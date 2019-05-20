@@ -8,6 +8,10 @@
 </ion-header>
 
 <ion-content padding>
+<!-- 
+  <ion-label>
+    {{ userDoc | json | async}}
+  </ion-label> -->
 
     <div class="signupContainer">
       <ion-avatar>
@@ -47,7 +51,7 @@
           </ion-item>
 
           <ion-item lines="none" class="terms">
-              <ion-checkbox slot="start"></ion-checkbox>
+              <ion-checkbox slot="start" [checked]="isChecked"></ion-checkbox>
               <ion-label><small>Agree to our terms and conditions?</small></ion-label>
           </ion-item>
 

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup , FormBuilder, Validators} from '@angular/forms';
+import { AngularFirestore } from 'angularfire2/firestore';
+import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-create-account',
@@ -8,7 +11,15 @@ import { FormControl, FormGroup , FormBuilder, Validators} from '@angular/forms'
 })
 export class CreateAccountPage implements OnInit {
 
-  firstName;
+  userProfileCollection: any;
+  userDoc: any;
+  firstName: string;
+  lastName: string;
+  phone: string;
+  email: string;
+  password: string;
+  isChecked = true;
+
 
   passwordType = 'password';
   passwordIcon = 'eye-off';
@@ -16,7 +27,11 @@ export class CreateAccountPage implements OnInit {
   confirmPasswordType = 'password';
   confirmPasswordIcon = 'eye-off';
 
-  constructor() { }
+  constructor(private fireStore: AngularFirestore,
+              private route: Router,
+              private alert: AlertController) {
+    this.userDoc = this.fireStore.collection('Users').doc<any>('users-data');
+  }
 
   ngOnInit() {
   }
@@ -39,6 +54,56 @@ export class CreateAccountPage implements OnInit {
       this.confirmPasswordType = 'password';
       this.confirmPasswordIcon = 'eye-off';
     }
+  }
+
+  async presentSuccessAlert() {
+    const alert = await this.alert.create({
+      header: 'Success!',
+      message: 'Account Successfully Created',
+      buttons: [
+        {
+          text: 'Okay',
+          handler: () => {
+            this.route.navigate(['signup']);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  async presentFailureAlert() {
+    const alert = await this.alert.create({
+      header: 'Failed!',
+      message: 'Failure creating account.',
+      buttons: [
+        {
+          text: 'Ok!',
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  signUp() {
+    // Add a new document in collection "cities"
+    this.userDoc.set({
+      Firstname: this.firstName,
+      Lastname: this.lastName,
+      Phone_number: this.phone,
+      Email: this.email,
+      Password: this.password,
+      Terms: this.isChecked
+    })
+    .then(() => {
+      this.presentSuccessAlert();
+    })
+    .catch((error) => {
+      this.presentFailureAlert();
+      console.error('Error writing document: ', error);
+    });
   }
 
 }
