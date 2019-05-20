@@ -12,7 +12,7 @@ export class SignupPage implements OnInit {
 
   image1 = 'assets/icon/favicon.png';
 
-  firstName: string = '';
+  email: string = '';
   password: string = '';
 
   constructor(private route: Router, private alert: AlertController) { }
@@ -21,11 +21,11 @@ export class SignupPage implements OnInit {
   }
 
   signIn = () => {
-    if (!this.firstName && !this.password) {
+    if (!this.email && !this.password) {
       this.signupFailed();
 
     } else {
-      this.route.navigate(['main', this.firstName]);
+      this.route.navigate(['main']);
     }
   }
 

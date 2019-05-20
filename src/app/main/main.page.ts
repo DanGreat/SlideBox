@@ -1,8 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { IonInfiniteScroll, LoadingController } from '@ionic/angular';
-import { jsonpCallbackContext } from '@angular/common/http/src/module';
 
 @Component({
   selector: 'app-main',
@@ -20,15 +19,11 @@ export class MainPage implements OnInit {
   };
 
 
-  constructor(private activatedRoute: ActivatedRoute,
-              private httpClient: HttpClient,
+  constructor(private httpClient: HttpClient,
               private loader: LoadingController,
               private route: Router) { }
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe(data => {
-      this.firstName = data.username;
-    });
      // OR you could try this out too
      // this.firstName = this.activatedRoute.snapshot.paramMap.get('username');
     this.presentLoading();
