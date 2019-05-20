@@ -1,0 +1,38 @@
+ion-fab{
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+ion-fab ion-fab-list ion-fab-button ion-icon{
+    color: var(--ion-color-primary);
+}
+div{
+    background: none;
+}
+ion-list{
+    background: none !important;
+}
+ion-card{
+    --background: #f8f8f8;
+    box-shadow: 0 0 9px #636161;
+}
+ion-label{
+    --color: #fefefe;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+}
+ion-slides{
+    box-shadow: 0 0 15px #a3a2a2;
+}
+.usersAction{
+    float: right;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+.usersAction ion-icon{
+    position: relative;
+    top: 14px;
+    margin-right: 8px;
+    font-size: 2rem;
+    color: var(--ion-color-primary);
+}

@@ -1,0 +1,54 @@
+<ion-app>
+  <ion-split-pane when="md">
+    <ion-menu side="start" type="overlay" menuId="menu">
+      <ion-header>
+        <ion-toolbar color="secondary">
+          <ion-avatar>
+            <img [src]="image" />
+          </ion-avatar>
+          <ion-title>Profile</ion-title>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content>
+        <ion-list lines="none">
+          <ion-menu-toggle auto-hide="true">
+              <ion-item [routerDirection]="'root'" [routerLink]="'/home'">
+                <ion-icon slot="start" name="contact"></ion-icon>
+                Change Profile
+              </ion-item>
+    
+              <ion-item [routerDirection]="'root'" [routerLink]="'/home'">
+                <ion-icon slot="start" name="ios-albums"></ion-icon>
+                My News
+              </ion-item>
+    
+              <ion-item [routerDirection]="'root'" [routerLink]="'/home'">
+                <ion-icon slot="start" name="chatbubbles"></ion-icon>
+                Chats
+              </ion-item>
+    
+              <ion-item [routerDirection]="'root'" [routerLink]="'/home'">
+                <ion-icon slot="start" name="contacts"></ion-icon>
+                Refer a Friend
+              </ion-item>
+    
+              <ion-item [routerDirection]="'root'" [routerLink]="'/home'">
+                <ion-icon slot="start" name="star"></ion-icon>
+                Rate App
+              </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+
+      <ion-footer>
+            <ion-button size="default" (click)="logout()">
+              <ion-ripple-effect type="bounded"></ion-ripple-effect>
+                <ion-icon slot="start" name="power"></ion-icon>
+                Log Out
+            </ion-button>
+      </ion-footer>
+    </ion-menu>
+    <ion-router-outlet main></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

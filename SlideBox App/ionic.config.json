@@ -1,0 +1,7 @@
+{
+  "name": "SlideBox",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Signup to SlideBox</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+    <div class="signupContainer">
+      <ion-avatar>
+          <img src="../../assets/icon/favicon.png" />
+      </ion-avatar>
+    
+          <ion-item>
+            <ion-label position="floating" color="secondary">Firstname</ion-label>
+            <ion-input type="text" [(ngModel)]="firstName" clear-input="true" required="true"></ion-input>
+          </ion-item>
+
+          <ion-item>
+              <ion-label position="floating" color="secondary">Lastname</ion-label>
+              <ion-input type="text" [(ngModel)]="lastName" clear-input="true" required="true"></ion-input>
+          </ion-item>
+
+          <ion-item>
+              <ion-label position="floating" color="secondary">Phone</ion-label>
+              <ion-input type="tel" [(ngModel)]="phone" clear-input="true" required="true"></ion-input>
+          </ion-item>
+
+          <ion-item>
+              <ion-label position="floating" color="secondary">Email</ion-label>
+              <ion-input type="email" [(ngModel)]="email" clear-input="true" required="true"></ion-input>
+          </ion-item>
+
+          <ion-item>
+              <ion-label position="floating" color="secondary">Password</ion-label>
+              <ion-input [type]="passwordType" [(ngModel)]="password" ></ion-input>
+              <ion-icon [name]="passwordIcon" (click)="showHidePassword()" slot="end" class="passwordIcon"></ion-icon>
+          </ion-item>
+
+          <ion-item>
+              <ion-label position="floating" color="secondary">Confirm Password</ion-label>
+              <ion-input [type]="confirmPasswordType" [(ngModel)]="confirmPassword"></ion-input>
+              <ion-icon [name]="confirmPasswordIcon" (click)="showHideConfirmPassword()" slot="end" class="confirmPasswordIcon"></ion-icon>
+          </ion-item>
+
+          <ion-item lines="none" class="terms">
+              <ion-checkbox slot="start"></ion-checkbox>
+              <ion-label><small>Agree to our terms and conditions?</small></ion-label>
+          </ion-item>
+
+          <ion-button (click)="signUp()" class="signInBtn" fill="block">
+              <ion-ripple-effect type="bounded"></ion-ripple-effect>
+            SIGN UP
+          </ion-button>
+    </div>
+
+</ion-content>

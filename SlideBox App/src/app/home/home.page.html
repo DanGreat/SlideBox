@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+   <ion-slides pager="true" [options]="slideOptions">
+     <ion-slide class="slide1">
+       <ion-text class="slideTxt">
+          <ion-img [src]="image1"></ion-img>
+         <h1>Welcome Friends!</h1>
+         <p><b>Slidebox</b> is a platform that does what it does perfectly.</p>
+       </ion-text>
+     </ion-slide>
+     <ion-slide class="slide2">
+        <ion-text class="slideTxt">
+           <ion-img [src]="image1"></ion-img>
+          <h1>Explore at your pace!</h1>
+          <p><b>Slidebox</b> gives you the advantage of exploring every of its content at your own pace.</p>
+        </ion-text>
+      </ion-slide>
+      <ion-slide class="slide3">
+          <ion-text class="slideTxt">
+             <ion-img [src]="image1"></ion-img>
+            <h1>Invite Friends!</h1>
+            <p><b>Slidebox</b> makes you connect with your loved ones everytime anytime.</p>
+          </ion-text>
+        </ion-slide>
+    <ion-slide class="slide4">
+      <ion-button (click)="getStarted()" class="startedbtn" size="large">
+        <ion-ripple-effect type="bounded"></ion-ripple-effect>
+        Get Started!
+      </ion-button>
+    </ion-slide>
+   </ion-slides>
+</ion-content>

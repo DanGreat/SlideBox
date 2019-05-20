@@ -1,0 +1,79 @@
+<ion-header>
+    <ion-toolbar color="tertiary">
+        <ion-buttons slot="start">
+            <ion-menu-button color="primary"></ion-menu-button>
+        </ion-buttons>
+        <ion-title>SlideBox</ion-title>
+      </ion-toolbar>
+</ion-header>
+
+<ion-content scrollEvents="true">
+
+  <ion-slides pager="false" [options]="slideOpt">
+    <ion-slide>
+      <ion-img src="../../assets/bg1.JPG"></ion-img>
+    </ion-slide>
+    <ion-slide>
+        <ion-img src="../../assets/bg2.JPG"></ion-img>
+    </ion-slide>
+      <ion-slide>
+          <ion-img src="../../assets/bg3.JPG"></ion-img>
+      </ion-slide>
+  </ion-slides>
+  <ion-label>
+    <h1>Welcome {{ firstName }} to SlideBox</h1>
+  </ion-label>
+
+  <ion-list>
+    <div *ngFor="let news of allNews" class="news-div">
+      <ion-card *ngFor="let p of news.articles">
+        <ion-img src="{{ p.urlToImage }}"></ion-img>     
+          <ion-card-header>
+            <ion-card-subtitle>{{ p.author }}</ion-card-subtitle>
+            <ion-card-title>{{ p.title }}</ion-card-title>
+          </ion-card-header>
+        
+          <ion-card-content>
+            {{ p.description }}
+            <ion-label class="usersAction"> 
+                <ion-icon slot="start" name="add" class="addIcon" (click)="addNews"></ion-icon>
+                <ion-button (click)="readNews(p.url)" size="small" fill="outline">
+                  Read
+                </ion-button>
+            </ion-label>
+          </ion-card-content>
+
+         
+        </ion-card>
+    </div>
+    
+  </ion-list>
+  
+
+ 
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="moreNews($event)">
+        <ion-infinite-scroll-content
+          loadingSpinner="bubbles"
+          loadingText="Loading more news...">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button>
+          <ion-icon name="share"></ion-icon>
+        </ion-fab-button>
+      
+        <ion-fab-list side="top">
+          <ion-fab-button>
+            <ion-icon name="logo-facebook"></ion-icon>
+          </ion-fab-button>
+          <ion-fab-button>
+            <ion-icon name="logo-twitter"></ion-icon>
+          </ion-fab-button>
+          <ion-fab-button>
+            <ion-icon name="logo-whatsapp"></ion-icon>
+          </ion-fab-button>
+        </ion-fab-list>     
+    </ion-fab>
+
+</ion-content>
