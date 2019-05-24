@@ -2,17 +2,17 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { IonInfiniteScroll, LoadingController } from '@ionic/angular';
-import { AlertController, ToastController} from '@ionic/angular';
+import { ToastController, AlertController  } from '@ionic/angular';
 import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser/ngx';
 
 @Component({
-  selector: 'app-main',
-  templateUrl: './main.page.html',
-  styleUrls: ['./main.page.scss'],
+  selector: 'app-health-category',
+  templateUrl: './health-category.page.html',
+  styleUrls: ['./health-category.page.scss'],
 })
-export class MainPage implements OnInit {
+export class HealthCategoryPage implements OnInit {
+
   @ViewChild(IonInfiniteScroll) scroll: IonInfiniteScroll;
-  firstName: any;
   allNews: any = [];
   page = 1;
 
@@ -28,26 +28,24 @@ export class MainPage implements OnInit {
               private appBrowser: InAppBrowser) { }
 
   ngOnInit() {
-     // OR you could try this out too
-     // this.firstName = this.activatedRoute.snapshot.paramMap.get('username');
     this.presentLoading();
   }
 
-
   getApi() {
-      this.httpClient
-      .get(`https://newsapi.org/v2/top-headlines?country=ng&pageSize=5&page=${this.page}&apiKey=4f6e3e854d414e3b92fdac5c96c04102`)
-      .subscribe((response) => {
-      this.allNews = Array<any>(response);
-      this.loader.dismiss();
-      });
-
+    this.httpClient
+  // tslint:disable-next-line: max-line-length
+    .get(`https://newsapi.org/v2/top-headlines?country=ng&category=health&pageSize=5&page=${this.page}&apiKey=4f6e3e854d414e3b92fdac5c96c04102`)
+    .subscribe((response) => {
+    this.allNews = Array<any>(response);
+    this.loader.dismiss();
+    });
   }
 
   moreNews(event: any) {
     this.page++;
     this.httpClient
-    .get(`https://newsapi.org/v2/top-headlines?country=ng&pageSize=5&page=${this.page}&apiKey=4f6e3e854d414e3b92fdac5c96c04102`)
+    // tslint:disable-next-line: max-line-length
+    .get(`https://newsapi.org/v2/top-headlines?country=ng&category=health&pageSize=5&page=${this.page}&apiKey=4f6e3e854d414e3b92fdac5c96c04102`)
     .subscribe((response) => {
       const more = Array<any>(response);
       for (const article of more) {
@@ -84,7 +82,7 @@ export class MainPage implements OnInit {
   async addedNews() {
     const toast = await this.toast.create({
       message: 'News added',
-      duration: 3000,
+      duration: 2000,
       buttons: [
         {
           text: 'Okay',
@@ -112,21 +110,15 @@ export class MainPage implements OnInit {
   }
 
   refresh(e) {
-     this.httpClient
-    .get(`https://newsapi.org/v2/top-headlines?country=ng&apiKey=4f6e3e854d414e3b92fdac5c96c04102`)
-    .subscribe((response) => {
+    this.httpClient
+   .get(`https://newsapi.org/v2/top-headlines?country=ng&category=health&apiKey=4f6e3e854d414e3b92fdac5c96c04102`)
+   .subscribe((response) => {
       this.allNews = Array<any>(response);
       e.target.complete();
-    });
-  }
+   });
+ }
 
-  userProfile() {
-    this.route.navigate(['profile']);
-  }
-
-  addNews() {
-    this.addedNews();
-  }
-
-
+ addNews() {
+  this.addedNews();
+}
 }

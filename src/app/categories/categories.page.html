@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+    <ion-title>News Categories</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content slot="fixed">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" *ngFor='let cat of categories'>
+        <ion-card (click)="getCategory(cat.page)">
+            <ion-img [src]="cat.imgUrl"></ion-img>
+          <ion-card-header>
+            <ion-card-title>{{cat.category}}</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

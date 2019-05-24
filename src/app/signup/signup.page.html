@@ -9,22 +9,24 @@
           <ion-avatar>
             <img [src]="image1" />
           </ion-avatar>
-      
+        <form [formGroup]="loginForm">
             <ion-item>
-              <ion-label position="floating" color="secondary">E-mail</ion-label>
-              <ion-input type="email" [(ngModel)]="email" required></ion-input>
+              <ion-label position="floating" color="secondary">Email</ion-label>
+              <ion-input type="email" formControlName="email"></ion-input>
             </ion-item>
 
             <ion-item>
                 <ion-label position="floating" color="secondary">Password</ion-label>
-                <ion-input type="password" [(ngModel)]="password" required></ion-input>
+                <ion-input type="password" formControlName="password"></ion-input>
             </ion-item>
 
            <ion-label><a href="#">Forgot Password?</a></ion-label>
 
-            <ion-button (click)="signIn()" class="signInBtn" fill="block">
+            <ion-button (click)="signIn()" class="signInBtn" fill="block" [disabled]="!loginForm.valid">
+              <ion-ripple-effect type="bounded"></ion-ripple-effect>
               SIGN IN
             </ion-button>
+          </form>
               <h2 (click)="signUp()"><a href="javascript:void(0)" class="signupText">SIGN UP</a></h2>
         </div>
 </ion-content>

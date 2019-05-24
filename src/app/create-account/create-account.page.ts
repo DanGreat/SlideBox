@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup , FormBuilder, Validators} from '@angular/forms';
+import { FormControl, FormGroup , FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
@@ -11,15 +11,10 @@ import { AlertController } from '@ionic/angular';
 })
 export class CreateAccountPage implements OnInit {
 
+  register: FormGroup;
+
   userProfileCollection: any;
   userDoc: any;
-  firstName: string;
-  lastName: string;
-  phone: string;
-  email: string;
-  password: string;
-  isChecked = true;
-
 
   passwordType = 'password';
   passwordIcon = 'eye-off';
@@ -29,8 +24,44 @@ export class CreateAccountPage implements OnInit {
 
   constructor(private fireStore: AngularFirestore,
               private route: Router,
-              private alert: AlertController) {
+              private alert: AlertController,
+              public formBuilder: FormBuilder) {
     this.userDoc = this.fireStore.collection('Users').doc<any>('users-data');
+    this.register = this.formBuilder.group({
+      firstname: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.minLength(6),
+        Validators.maxLength(15),
+        Validators.pattern('^[a-zA-Z]+')
+      ])),
+      lastname: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.minLength(6),
+        Validators.maxLength(15),
+        Validators.pattern('^[a-zA-Z]+')
+      ])),
+      phone: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.minLength(11),
+        Validators.maxLength(20),
+        Validators.pattern('^[0-9]+')
+      ])),
+      email: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.minLength(6),
+        Validators.maxLength(15),
+        Validators.pattern('[a-zA-Z0-9.\-@]+@[a-zA-Z0-9\-]+.[a-zA-Z]+$')
+      ])),
+      password: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.minLength(6),
+        Validators.maxLength(12),
+        Validators.pattern('^[%*-_@!a-zA-Z0-9]+')
+      ])),
+      terms: new FormControl('', Validators.compose([
+        Validators.required
+      ]))
+    });
   }
 
   ngOnInit() {
@@ -90,17 +121,17 @@ export class CreateAccountPage implements OnInit {
   signUp() {
     // Add a new document in collection "cities"
     this.userDoc.set({
-      Firstname: this.firstName,
-      Lastname: this.lastName,
-      Phone_number: this.phone,
-      Email: this.email,
-      Password: this.password,
-      Terms: this.isChecked
+      // Firstname: this.firstName,
+      // Lastname: this.lastName,
+      // Phone_number: this.phone,
+      // Email: this.email,
+      // Password: this.password,
+      // Terms: this.isChecked
     })
     .then(() => {
       this.presentSuccessAlert();
     })
-    .catch((error) => {
+    .catch((error: any) => {
       this.presentFailureAlert();
       console.error('Error writing document: ', error);
     });

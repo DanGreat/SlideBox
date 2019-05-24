@@ -1,5 +1,4 @@
 import { Component, ViewChild} from '@angular/core';
-import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { async } from 'q';
 
@@ -11,37 +10,19 @@ import { async } from 'q';
 export class HomePage {
   // @ViewChild(Slides) mySlide: Slides;
 
-  image1 = 'assets/icon/favicon.png';
-
   slideOptions = {
     loop: true
   };
 
-  constructor(private alert: AlertController, private route: Router) {}
+  image1 = 'assets/intro4.svg';
+  image2 = 'assets/intro2.svg';
+  image3 = 'assets/intro3.svg';
+  image4 = 'assets/intro1.svg';
+
+  constructor(private route: Router) {}
 
 
-  getStarted = () => {
-    this.presentAlertConfirm();
-  }
-
-  async presentAlertConfirm() {
-    const alert = await this.alert.create({
-      header: 'Confirm!',
-      message: 'Are you ready for this?',
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: '#10EC34'
-        }, {
-          text: 'Okay',
-          handler: () => {
-            this.route.navigate(['signup']);
-          }
-        }
-      ]
-    });
-
-    await alert.present();
+  getStarted() {
+    this.route.navigate(['signup']);
   }
 }

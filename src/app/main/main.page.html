@@ -4,12 +4,22 @@
             <ion-menu-button color="primary"></ion-menu-button>
         </ion-buttons>
         <ion-title>SlideBox</ion-title>
+        <ion-buttons slot="end">
+          <ion-icon size="large"  
+          slot="start" name="md-contact" color="primary" (click)="userProfile()"></ion-icon>
+      </ion-buttons>
       </ion-toolbar>
 </ion-header>
 
-<ion-content scrollEvents="true">
+<ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+      <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      refreshingSpinner="bubbles">
+    </ion-refresher-content>
+    </ion-refresher>
 
-  <ion-slides pager="false" [options]="slideOpt">
+  <ion-slides pager="true" [options]="slideOpt">
     <ion-slide>
       <ion-img src="../../assets/bg1.JPG"></ion-img>
     </ion-slide>
@@ -36,7 +46,7 @@
           <ion-card-content>
             {{ p.description }}
             <ion-label class="usersAction"> 
-                <ion-icon slot="start" name="add" class="addIcon" (click)="addNews"></ion-icon>
+                <ion-icon slot="start" name="add" class="addIcon" (click)="addNews()"></ion-icon>
                 <ion-button (click)="readNews(p.url)" size="small" fill="outline">
                   Read
                 </ion-button>

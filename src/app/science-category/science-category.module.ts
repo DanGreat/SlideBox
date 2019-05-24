@@ -1,26 +1,28 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { IonicModule } from '@ionic/angular';
 
-import { CreateAccountPage } from './create-account.page';
+import { ScienceCategoryPage } from './science-category.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: CreateAccountPage
+    component: ScienceCategoryPage
   }
 ];
 
 @NgModule({
   imports: [
+    HttpClientModule,
     CommonModule,
-    ReactiveFormsModule,
+    FormsModule,
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [CreateAccountPage]
+  declarations: [ScienceCategoryPage]
 })
-export class CreateAccountPageModule {}
+export class ScienceCategoryPageModule {}
