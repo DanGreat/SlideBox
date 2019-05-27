@@ -7,29 +7,37 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding fullscreen slot="fixed">
+<ion-content fullscreen padding slot="fixed">
     <ion-avatar>
       <img src="../../assets/leisure.jpg" />
-        <ion-label>First name</ion-label>
     </ion-avatar>
-
-  <ion-list>
-    <ion-item>
-      <ion-label>First name</ion-label>
-      <ion-input></ion-input>
-    </ion-item>
-
-    <ion-item>
-        <ion-label>Last name</ion-label>
-      </ion-item>
-
+      <ion-text>
+        <h3>{{ fullName }}</h3>
+        <p>UI/UX Developer, Web Developer, Mobile Developer, Full-Stack Developer</p>
+      </ion-text>
+  <ion-list lines="none">
       <ion-item>
-          <ion-label>Email</ion-label>
+          <ion-icon slot="start" name="md-person" ></ion-icon>
+        <ion-label>{{ fullName }}</ion-label>
+      </ion-item>
+      <ion-item>
+          <ion-icon slot="start" name="md-call"></ion-icon>
+          <ion-label>{{ phone }}</ion-label>
+        </ion-item>
+      <ion-item>
+          <ion-icon slot="start" name="md-mail"></ion-icon>
+          <ion-label>{{ mailAddress }}</ion-label>
         </ion-item>
 
         <ion-item>
-            <ion-label>Reset Password</ion-label>
+            <ion-icon slot="start" name="md-globe" ></ion-icon>
+            <ion-label>{{ webUrl }}</ion-label>
           </ion-item>
   </ion-list>
+  <ion-button (click)="editProfile()" fill="outline" strong="true" shape="round">
+    <ion-ripple-effect type="bounded"></ion-ripple-effect>
+    <ion-icon slot="start" name="md-create"></ion-icon>
+    Edit
+  </ion-button>
 
 </ion-content>

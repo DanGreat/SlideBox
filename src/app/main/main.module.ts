@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { PopoverComponent } from '../../components/popover/popover.component';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -23,6 +24,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     HttpClientModule
   ],
-  declarations: [MainPage]
+  entryComponents: [PopoverComponent],
+  declarations: [MainPage, PopoverComponent]
 })
 export class MainPageModule {}

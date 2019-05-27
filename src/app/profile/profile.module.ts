@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { ModalComponent } from '../../components/modal/modal.component';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -23,6 +24,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ProfilePage]
+  entryComponents: [ModalComponent],
+  declarations: [ProfilePage, ModalComponent]
 })
 export class ProfilePageModule {}

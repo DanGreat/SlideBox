@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { IonInfiniteScroll, LoadingController } from '@ionic/angular';
 import { AlertController, ToastController} from '@ionic/angular';
 import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser/ngx';
+import { PopoverController } from '@ionic/angular';
+import { PopoverComponent } from '../../components/popover/popover.component';
 
 @Component({
   selector: 'app-main',
@@ -15,17 +17,19 @@ export class MainPage implements OnInit {
   firstName: any;
   allNews: any = [];
   page = 1;
-
-  slideOpt = {
-    loop: true,
-  };
+  slideOpt: any;
 
   constructor(private httpClient: HttpClient,
               private loader: LoadingController,
               private route: Router,
               private alert: AlertController,
               private toast: ToastController,
-              private appBrowser: InAppBrowser) { }
+              private appBrowser: InAppBrowser,
+              public popover: PopoverController) { 
+                this.slideOpt = {
+                  loop: true,
+                };
+              }
 
   ngOnInit() {
      // OR you could try this out too
@@ -120,11 +124,24 @@ export class MainPage implements OnInit {
     });
   }
 
-  userProfile() {
-    this.route.navigate(['profile']);
+  async presentPopover(ev: any) {
+    const popover = await this.popover.create({
+      component: PopoverComponent,
+      backdropDismiss: true,
+      event: ev,
+      animated: true,
+      cssClass: 'customPop'
+    });
+
+    return await popover.present();
+  }
+
+  userProfile(event: any) {
+    this.presentPopover(event);
   }
 
   addNews() {
+    //a toast
     this.addedNews();
   }
 

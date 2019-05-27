@@ -6,10 +6,37 @@ ion-toolbar {
 ion-avatar{
     position: relative;
     bottom: 75px;
-    left: 35%;
-    z-index: 20;
+    left: 33%;
+    z-index: 10;
     width: 120px;
     height: 120px;
     --border-radius: 50%;
     border: 5px solid #ffffff;
+}
+ion-button{
+    float: right;
+    margin-top: -10px;
+}
+ion-text{
+    position: relative;
+    text-align: center;
+    bottom: 75px;
+}
+ion-list{
+//     bottom: 5vh;
+//     position: relative;
+margin-top: -70px;
+}
+ion-icon.userEdit{
+    position: relative;
+    z-index: 20;
+    left: 35%;
+    right: -10vw;
+}
+ion-icon{
+    color: var(--ion-color-primary);
+}
+ion-label{
+    float: right;
+    text-align: right;
 }

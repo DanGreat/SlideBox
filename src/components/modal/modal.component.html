@@ -1,0 +1,48 @@
+<ion-content padding>
+  <form>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6">
+            <ion-avatar>
+                <img [src]="image" />
+            </ion-avatar>
+        </ion-col>
+        <ion-col size="6">
+            <ion-button (click)="onClick()" fill="outline">
+                Change Image
+              </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-item>
+      <ion-label position="floating">First name</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Last name</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label position="floating">Phone</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Email Address</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Website URL</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+    <ion-button (click)="saveProfile()" shape="round" expand="block">
+      <ion-icon slot="start" name="save"></ion-icon>
+      Save
+    </ion-button>
+  </form>
+</ion-content>
