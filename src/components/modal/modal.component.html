@@ -4,11 +4,11 @@
       <ion-row>
         <ion-col size="6">
             <ion-avatar>
-                <img [src]="image" />
+                <img src="../../assets/leisure.jpg" />
             </ion-avatar>
         </ion-col>
         <ion-col size="6">
-            <ion-button (click)="onClick()" fill="outline">
+            <ion-button (click)="choosePhoto()" fill="outline">
                 Change Image
               </ion-button>
         </ion-col>
@@ -16,28 +16,28 @@
     </ion-grid>
 
     <ion-item>
-      <ion-label position="floating">First name</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-label position="floating" color="primary">First name</ion-label>
+      <ion-input type="text" [(ngModel)]="firstname" name="firstname"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="floating">Last name</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-label position="floating" color="primary">Last name</ion-label>
+      <ion-input type="text"  [(ngModel)]="lastname" name="lastname"></ion-input>
     </ion-item>
 
     <ion-item>
-        <ion-label position="floating">Phone</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-label position="floating" color="primary">Phone</ion-label>
+        <ion-input type="tel"  [(ngModel)]="phoneNumber" name="phoneNumber"></ion-input>
       </ion-item>
 
     <ion-item>
-      <ion-label position="floating">Email Address</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-label position="floating" color="primary">Email Address</ion-label>
+      <ion-input type="email"  [(ngModel)]="email" name="email"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="floating">Website URL</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-label position="floating" color="primary">Website URL</ion-label>
+      <ion-input type="text"  [(ngModel)]="url" name="url"></ion-input>
     </ion-item>
 
     <ion-button (click)="saveProfile()" shape="round" expand="block">

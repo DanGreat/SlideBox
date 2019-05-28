@@ -1,10 +1,24 @@
+ion-content{
+    --background: url('../../assets/bg3.JPG')no-repeat center;
+}
+ion-label{
+    text-shadow: 2px 2px 3px black;
+    font-weight: 300;
+}
 ion-button{
     margin-top: 20px;
 }
 form{
     margin-top: 50px;
 }
+ion-item{
+    --background: none;
+}
 ion-avatar{
     width: 100px;
     height: 100px;
+    margin: 0;
+}
+ion-input{
+    color: white;
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup , FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { FormControl, FormGroup , FormBuilder, Validators } from '@angular/forms';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';

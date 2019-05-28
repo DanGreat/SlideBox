@@ -11,19 +11,12 @@ export class ProfilePage implements OnInit {
 
   fullName: string =  'Bassey Daniel';
   mailAddress: string = 'dbassey360@gmail.com';
-  phone = 2348170493109;
+  phone = 8170493109;
   webUrl: string = 'www.slidebox.com';
 
   firstName = this.fullName.slice(this.fullName.indexOf(' '), this.fullName.length);
   lastName = this.fullName.slice(0, this.fullName.indexOf(' '));
 
-  userProfile = {
-    firstname: this.firstName,
-    lastname: this.lastName,
-    phoneNumber: this.phone,
-    email: this.mailAddress,
-    url: this.webUrl
-  };
   constructor(private modal: ModalController) { }
 
   ngOnInit() {
@@ -33,19 +26,28 @@ export class ProfilePage implements OnInit {
     const mymodal = await this.modal.create({
       component: ModalComponent,
       backdropDismiss: false,
-      componentProps: this.userProfile,
+      componentProps: {
+        firstname: this.firstName,
+        lastname: this.lastName,
+        phoneNumber: this.phone,
+        email: this.mailAddress,
+        url: this.webUrl
+      },
       animated: true
-
     });
 
-     mymodal.onDidDismiss().then((data) => {
-       console.log(data);
-     });
+    mymodal.onDidDismiss().then((response) => {
+        const value = response.data;
+        this.fullName = value.lastname + " " + value.firstname;
+        this.phone = value.phone;
+        this.mailAddress = value.mail;
+        this.webUrl = value.url;
+      }).catch(error => {
+        console.log('Could not get data' + error);
+      });
 
     return await mymodal.present();
-
-    const {data} = await mymodal.onWillDismiss();
-  }
+    }
 
   editProfile() {
     this.editmodal();

@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { ModalController, NavParams } from '@ionic/angular';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { File } from '@ionic-native/file/ngx';
+import { FileChooser } from '@ionic-native/file-chooser/ngx';
+
 
 @Component({
   selector: 'app-modal',
@@ -9,15 +11,48 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ModalComponent implements OnInit {
 
-  firstName;
-  constructor(private modal: ModalController, private route: ActivatedRoute, private nav: NavParams) { }
+  @Input() firstname;
+  @Input() lastname;
+  @Input() phoneNumber;
+  @Input() email;
+  @Input() url;
+
+  constructor(private modal: ModalController,
+              private file: File,
+              private fileChooser: FileChooser) { }
 
   ngOnInit() {
-    this.firstName = this.nav.get('userProfile');
-    console.log(this.firstName);
   }
 
   saveProfile() {
-    this.modal.dismiss();
+    this.modal.dismiss({
+      firstname: this.firstname,
+      lastname: this.lastname,
+      phone: this.phoneNumber,
+      mail: this.email,
+      url: this.url
+    });
+  }
+
+  choosePhoto() {
+    this.fileChooser.open()
+    .then((uri) => {
+      console.log(uri);
+
+      this.file.resolveLocalFilesystemUrl(uri).then((newUri) => {
+        console.log(JSON.stringify(newUri));
+
+        let dirPath = newUri.nativeURL;
+        let dirPathSegment = dirPath.split('/');
+        dirPathSegment.pop();
+        dirPath = dirPathSegment.join('/');
+
+        this.file.readAsArrayBuffer(dirPath, newUri.name).then((buffer) => {
+          console.log('File name = '+ newUri.name);
+          console.log('File directory = '+ buffer);
+        });
+      });
+    })
+    .catch(e => console.log(e));
   }
 }
