@@ -1,4 +1,5 @@
-<ion-content padding>
+<ion-content>
+  <div class="overlay"></div>
   <form>
     <ion-grid>
       <ion-row>
@@ -8,7 +9,7 @@
             </ion-avatar>
         </ion-col>
         <ion-col size="6">
-            <ion-button (click)="choosePhoto()" fill="outline">
+            <ion-button (click)="choosePhoto()" fill="outline" mode="ios">
                 Change Image
               </ion-button>
         </ion-col>
@@ -26,6 +27,12 @@
     </ion-item>
 
     <ion-item>
+      <ion-label position="floating" color="primary">Description</ion-label>
+      <ion-textarea type="text"  [(ngModel)]="desc" name="desc" maxlength="80"></ion-textarea>
+    </ion-item>
+
+
+    <ion-item>
         <ion-label position="floating" color="primary">Phone</ion-label>
         <ion-input type="tel"  [(ngModel)]="phoneNumber" name="phoneNumber"></ion-input>
       </ion-item>
@@ -40,7 +47,7 @@
       <ion-input type="text"  [(ngModel)]="url" name="url"></ion-input>
     </ion-item>
 
-    <ion-button (click)="saveProfile()" shape="round" expand="block">
+    <ion-button (click)="saveProfile()" shape="round" expand="block" mode="ios">
       <ion-icon slot="start" name="save"></ion-icon>
       Save
     </ion-button>

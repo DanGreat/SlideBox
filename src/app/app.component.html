@@ -10,7 +10,7 @@
       <ion-content>
         <ion-list lines="none">
           <ion-menu-toggle auto-hide="true">    
-              <ion-item [routerLink]="'/home'">
+              <ion-item [routerLink]="'/my-news'">
                 <ion-icon slot="start" name="md-globe"></ion-icon>
                 My News
               </ion-item>
@@ -39,7 +39,7 @@
       </ion-content>
 
       <ion-footer lines="none">
-            <ion-button size="default" (click)="logout()">
+            <ion-button size="default" (click)="logout()"  mode="ios">
               <ion-ripple-effect type="bounded"></ion-ripple-effect>
                 <ion-icon slot="start" name="power"></ion-icon>
                 Log Out

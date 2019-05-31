@@ -13,7 +13,7 @@
     </ion-avatar>
       <ion-text>
         <h3>{{ fullName }}</h3>
-        <p>UI/UX Developer, Web Developer, Mobile Developer, Full-Stack Developer</p>
+        <p>{{ descritption }}</p>
       </ion-text>
   <ion-list lines="none">
       <ion-item>
@@ -34,7 +34,7 @@
             <ion-label>{{ webUrl }}</ion-label>
           </ion-item>
   </ion-list>
-  <ion-button (click)="editProfile()" fill="outline" strong="true" shape="round">
+  <ion-button (click)="editProfile()" fill="outline" strong="true" shape="round" mode="ios">
     <ion-ripple-effect type="bounded"></ion-ripple-effect>
     <ion-icon slot="start" name="md-create"></ion-icon>
     Edit

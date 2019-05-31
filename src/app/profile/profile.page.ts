@@ -13,6 +13,7 @@ export class ProfilePage implements OnInit {
   mailAddress: string = 'dbassey360@gmail.com';
   phone = 8170493109;
   webUrl: string = 'www.slidebox.com';
+  descritption: string = 'UI/UX Developer, Web Developer, Mobile Developer, Full-Stack Developer';
 
   firstName = this.fullName.slice(this.fullName.indexOf(' '), this.fullName.length);
   lastName = this.fullName.slice(0, this.fullName.indexOf(' '));
@@ -31,7 +32,8 @@ export class ProfilePage implements OnInit {
         lastname: this.lastName,
         phoneNumber: this.phone,
         email: this.mailAddress,
-        url: this.webUrl
+        url: this.webUrl,
+        desc: this.descritption
       },
       animated: true
     });
@@ -42,6 +44,7 @@ export class ProfilePage implements OnInit {
         this.phone = value.phone;
         this.mailAddress = value.mail;
         this.webUrl = value.url;
+        this.descritption = value.description;
       }).catch(error => {
         console.log('Could not get data' + error);
       });

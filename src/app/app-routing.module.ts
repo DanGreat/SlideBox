@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'tech-category', loadChildren: './tech-category/tech-category.module#TechCategoryPageModule' },
   { path: 'business-category', loadChildren: './business-category/business-category.module#BusinessCategoryPageModule' },
   { path: 'profile', loadChildren: './profile/profile.module#ProfilePageModule' },
-  { path: 'modal', loadChildren: './modal/modal.module#ModalPageModule' }
+  { path: 'my-news/:img/:title', loadChildren: './my-news/my-news.module#MyNewsPageModule' }
 ];
 
 @NgModule({

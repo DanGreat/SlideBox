@@ -16,6 +16,7 @@ export class ModalComponent implements OnInit {
   @Input() phoneNumber;
   @Input() email;
   @Input() url;
+  @Input() desc;
 
   constructor(private modal: ModalController,
               private file: File,
@@ -30,7 +31,8 @@ export class ModalComponent implements OnInit {
       lastname: this.lastname,
       phone: this.phoneNumber,
       mail: this.email,
-      url: this.url
+      url: this.url,
+      description: this.desc
     });
   }
 

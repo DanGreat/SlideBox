@@ -46,8 +46,8 @@
           <ion-card-content>
             {{ p.description }}
             <ion-label class="usersAction"> 
-                <ion-icon slot="start" name="add" class="addIcon" (click)="addNews()"></ion-icon>
-                <ion-button (click)="readNews(p.url)" size="small" fill="outline">
+                <ion-icon slot="start" name="add" class="addIcon" (click)="addNews(p.urlToImage, p.title)"></ion-icon>
+                <ion-button (click)="readNews(p.url)" size="small" fill="outline" mode="ios">
                   Read
                 </ion-button>
             </ion-label>

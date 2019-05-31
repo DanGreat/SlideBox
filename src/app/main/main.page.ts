@@ -25,7 +25,7 @@ export class MainPage implements OnInit {
               private alert: AlertController,
               private toast: ToastController,
               private appBrowser: InAppBrowser,
-              public popover: PopoverController) { 
+              public popover: PopoverController) {
                 this.slideOpt = {
                   loop: true,
                 };
@@ -140,8 +140,11 @@ export class MainPage implements OnInit {
     this.presentPopover(event);
   }
 
-  addNews() {
-    //a toast
+  addNews(img: string, title: string) {
+    console.log(img);
+    console.log(title);
+    const image = encodeURIComponent(img);
+    this.route.navigate(['my-news', image, title]);
     this.addedNews();
   }
 
