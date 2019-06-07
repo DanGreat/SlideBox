@@ -27,6 +27,18 @@ ion-slides{
 ion-refresher{
     background: #fefefe;
 }
+ion-badge{
+    height: 10px;
+    --background: red;
+    --padding-top: 0;
+    --padding-bottom: 2px;
+    --padding-start: 1px;
+    --padding-end: 2px;
+    position: relative;
+    top: -7px;
+    left: -13px;
+    font-size: 10px;
+}
 .usersAction{
     float: right;
     margin-top: 10px;

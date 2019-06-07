@@ -1,0 +1,28 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/main"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ tabTitle }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+    <ion-tabs (ionTabsDidChange)="selected($event)">
+        <ion-tab-bar slot="top">
+          <ion-tab-button tab="friends">
+            <ion-icon name="people"></ion-icon>
+            <ion-label>Friends</ion-label>
+          </ion-tab-button>
+      
+          <ion-tab-button tab="status">
+            <ion-icon name="pulse"></ion-icon>
+            <ion-label>Status</ion-label>
+          </ion-tab-button>
+      
+          <ion-tab-button tab="calls">
+            <ion-icon name="phone-portrait"></ion-icon>
+            <ion-label>Calls</ion-label>
+          </ion-tab-button>
+        </ion-tab-bar>
+      </ion-tabs>
+

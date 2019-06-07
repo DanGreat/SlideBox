@@ -6,6 +6,7 @@ import { AlertController, ToastController} from '@ionic/angular';
 import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser/ngx';
 import { PopoverController } from '@ionic/angular';
 import { PopoverComponent } from '../../components/popover/popover.component';
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
 
 @Component({
   selector: 'app-main',
@@ -17,7 +18,9 @@ export class MainPage implements OnInit {
   firstName: any;
   allNews: any = [];
   page = 1;
-  slideOpt: any;
+  slideOpt = {
+    loop: true,
+  };
 
   constructor(private httpClient: HttpClient,
               private loader: LoadingController,
@@ -25,10 +28,8 @@ export class MainPage implements OnInit {
               private alert: AlertController,
               private toast: ToastController,
               private appBrowser: InAppBrowser,
-              public popover: PopoverController) {
-                this.slideOpt = {
-                  loop: true,
-                };
+              public popover: PopoverController,
+              private storage: NativeStorage) {
               }
 
   ngOnInit() {
@@ -94,7 +95,7 @@ export class MainPage implements OnInit {
           text: 'Okay',
           role: 'cancel',
           handler: () => {
-            console.log('Cancel clicked');
+            this.toast.dismiss();
           }
         }
       ]
@@ -141,11 +142,10 @@ export class MainPage implements OnInit {
   }
 
   addNews(img: string, title: string) {
-    console.log(img);
-    console.log(title);
     const image = encodeURIComponent(img);
     this.route.navigate(['my-news', image, title]);
-    this.addedNews();
+    // this.storage.setItem('userNews', {img: image, text: title});
+    // this.addedNews();
   }
 
 
