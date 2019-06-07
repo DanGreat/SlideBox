@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-news',
@@ -8,18 +8,24 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MyNewsPage implements OnInit {
 
-  noNews: boolean = true;
-  image: string;
+  noNews = true;
+  image: any[] = [];
   title: string;
-  data: any;
+  newsList: any[] = [];
 
-  constructor(private activeRoute: ActivatedRoute) { }
+  constructor(private activeRoute: ActivatedRoute, private route: Router) { }
 
   ngOnInit() {
-    this.activeRoute.params.subscribe((response) => {
-     this.data = Array<any>(response);
-     this.noNews = false;
-    });
+      if (this.activeRoute.snapshot.paramMap.has('img') && this.activeRoute.snapshot.paramMap.has('title')){
+        this.activeRoute.params.subscribe((response) => {
+          this.newsList.push(response);
+          this.noNews = false;
+          this.image.push(decodeURIComponent(this.newsList[0].img));
+        });
+      } else {
+        Component.call(this);
+    }
+
   }
 
 }

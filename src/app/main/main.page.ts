@@ -34,7 +34,7 @@ export class MainPage implements OnInit {
   ngOnInit() {
      // OR you could try this out too
      // this.firstName = this.activatedRoute.snapshot.paramMap.get('username');
-    this.presentLoading();
+      this.presentLoading();
   }
 
 

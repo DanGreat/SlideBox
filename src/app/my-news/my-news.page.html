@@ -7,16 +7,21 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content >
   <div *ngIf="noNews">
     You have no news on your list.
   </div>
   <ion-list>    
         <ion-item-sliding>
-          <ion-item *ngFor="let a of data">
-            <ion-label>
-              {{ a.title }}
-            </ion-label>
+          <ion-item *ngFor="let a of newsList">
+              <ion-thumbnail >
+                <img [src]="image" />
+              </ion-thumbnail>
+              <ion-card>
+                  <ion-card-header>
+                    <ion-card-subtitle>{{ a.title }}</ion-card-subtitle>
+                  </ion-card-header>
+                </ion-card>
           </ion-item>
 
           <ion-item-options>
