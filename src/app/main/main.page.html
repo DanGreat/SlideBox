@@ -4,11 +4,12 @@
             <ion-menu-button color="primary"></ion-menu-button>
             <!-- <ion-badge mode="ios">1</ion-badge> -->
         </ion-buttons>
-        <ion-title>SlideBox</ion-title>
         <ion-buttons slot="end">
           <ion-icon size="large"  
           slot="start" name="md-contact" color="primary" (click)="userProfile($event)"></ion-icon>
       </ion-buttons>
+
+      <ion-searchbar animated debounce mode="ios"></ion-searchbar>
       </ion-toolbar>
 </ion-header>
 
@@ -31,11 +32,35 @@
           <ion-img src="../../assets/bg3.JPG"></ion-img>
       </ion-slide>
   </ion-slides>
-  <ion-label>
-    <h1>Welcome to SlideBox</h1>
-  </ion-label>
+  <ion-tab-bar>
 
-  <ion-list>
+      <ion-tab-button>
+        <h4>Health</h4>
+      </ion-tab-button>
+  
+      <ion-tab-button>
+        <h4>Science</h4>
+      </ion-tab-button>
+
+      <ion-tab-button>
+          <h4>Sports</h4>
+        </ion-tab-button>
+    
+        <ion-tab-button>
+          <h4>Business</h4>
+        </ion-tab-button>
+
+        <ion-tab-button>
+            <h4>Technology</h4>
+          </ion-tab-button>
+      
+          <ion-tab-button>
+            <h4>Entertainment</h4>
+          </ion-tab-button>
+  
+    </ion-tab-bar>
+
+  <ion-list *ngIf="allNews.length != 0">
     <div *ngFor="let news of allNews" class="news-div">
       <ion-card *ngFor="let p of news.articles">
         <ion-img src="{{ p.urlToImage }}"></ion-img>     
@@ -59,6 +84,28 @@
     </div>
     
   </ion-list>
+  
+  <div *ngIf="allNews.length == 0">
+    <ion-list>
+        <ion-card class="custom-skeleton">
+            <ion-thumbnail>
+                <ion-skeleton-text animated></ion-skeleton-text>
+              </ion-thumbnail>
+                 
+              <ion-card-header>
+                <ion-card-subtitle><ion-skeleton-text animated style="width: 97%; height: 20px;"></ion-skeleton-text></ion-card-subtitle>
+                <ion-card-title><ion-skeleton-text animated style="width: 86%; height: 20px;"></ion-skeleton-text></ion-card-title>
+                <ion-skeleton-text animated style="width: 72%; height: 20px;"></ion-skeleton-text>
+              </ion-card-header>
+            
+              <ion-card-content>
+                  <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+                  <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                  <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+              </ion-card-content>
+            </ion-card>
+    </ion-list>
+  </div>
   
 
  

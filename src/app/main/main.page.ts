@@ -15,7 +15,6 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
 })
 export class MainPage implements OnInit {
   @ViewChild(IonInfiniteScroll) scroll: IonInfiniteScroll;
-  firstName: any;
   allNews: any = [];
   page = 1;
   slideOpt = {

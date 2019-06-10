@@ -39,3 +39,7 @@ ion-menu ion-content ion-list ion-item {
 .customPop{
     top: 100;
 }
+ion-toolbar.neon{
+    --background: url(../src/assets/neon.jpg)no-repeat center;
+    height: 180px;
+}

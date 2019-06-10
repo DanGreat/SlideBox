@@ -11,7 +11,7 @@ export class HomePage {
   // @ViewChild(Slides) mySlide: Slides;
 
   slideOptions = {
-    loop: true
+    loop: false
   };
 
   image1 = 'assets/intro4.svg';
