@@ -7,15 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatsPage implements OnInit {
 
-  tabTitle: string = 'Chats';
+  tabTitle;
+
   constructor() { }
 
   ngOnInit() {
   }
 
   selected(ev: any) {
-  this.tabTitle = ev.tab;
-
+    let firstLetter = ev['tab'].charAt(0).toUpperCase();
+    let remaining = ev['tab'].slice(1);
+    const title = firstLetter + remaining;
+    this.tabTitle = title;
   }
 
 }

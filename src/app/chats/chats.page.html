@@ -8,18 +8,21 @@
 </ion-header>
 
     <ion-tabs (ionTabsDidChange)="selected($event)">
-        <ion-tab-bar slot="top">
+        <ion-tab-bar slot="bottom">
           <ion-tab-button tab="friends">
+            <ion-ripple-effect type="bounded"></ion-ripple-effect>
             <ion-icon name="people"></ion-icon>
             <ion-label>Friends</ion-label>
           </ion-tab-button>
       
           <ion-tab-button tab="status">
+            <ion-ripple-effect type="bounded"></ion-ripple-effect>
             <ion-icon name="pulse"></ion-icon>
             <ion-label>Status</ion-label>
           </ion-tab-button>
       
           <ion-tab-button tab="calls">
+            <ion-ripple-effect type="bounded"></ion-ripple-effect>
             <ion-icon name="phone-portrait"></ion-icon>
             <ion-label>Calls</ion-label>
           </ion-tab-button>

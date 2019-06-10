@@ -25,6 +25,10 @@ export class ModalComponent implements OnInit {
   ngOnInit() {
   }
 
+  close() {
+    this.modal.dismiss();
+  }
+
   saveProfile() {
     this.modal.dismiss({
       firstname: this.firstname,
@@ -50,8 +54,8 @@ export class ModalComponent implements OnInit {
         dirPath = dirPathSegment.join('/');
 
         this.file.readAsArrayBuffer(dirPath, newUri.name).then((buffer) => {
-          console.log('File name = '+ newUri.name);
-          console.log('File directory = '+ buffer);
+          console.log('File name = ' + newUri.name);
+          console.log('File directory = ' + buffer);
         });
       });
     })
