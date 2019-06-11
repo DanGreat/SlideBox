@@ -1,12 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { IonInfiniteScroll, LoadingController } from '@ionic/angular';
 import { AlertController, ToastController} from '@ionic/angular';
 import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser/ngx';
 import { PopoverController } from '@ionic/angular';
 import { PopoverComponent } from '../../components/popover/popover.component';
-import { NativeStorage } from '@ionic-native/native-storage/ngx';
+import { DatabaseService } from 'src/app/database.service';
 
 @Component({
   selector: 'app-main',
@@ -80,7 +80,7 @@ export class MainPage implements OnInit {
       },
     }
   };
-
+  headers: HttpHeaders;
   constructor(private httpClient: HttpClient,
               private loader: LoadingController,
               private route: Router,
@@ -88,7 +88,7 @@ export class MainPage implements OnInit {
               private toast: ToastController,
               private appBrowser: InAppBrowser,
               public popover: PopoverController,
-              private storage: NativeStorage) {
+              private databaseService: DatabaseService) {
               }
 
   ngOnInit() {
@@ -123,6 +123,7 @@ export class MainPage implements OnInit {
 
   async presentLoading() {
     const loading = await this.loader.create({
+      backdropDismiss: true,
       message: 'Loading News...',
       spinner: 'bubbles',
     });
@@ -148,7 +149,7 @@ export class MainPage implements OnInit {
   async addedNews() {
     const toast = await this.toast.create({
       message: 'News added',
-      duration: 3000,
+      duration: 5000,
       buttons: [
         {
           text: 'Okay',
@@ -164,12 +165,7 @@ export class MainPage implements OnInit {
 
   readNews(url: string) {
     const options: InAppBrowserOptions = {
-      location: 'no',
-  		toolbarposition: 'top',
-  		toolbarcolor: '#488aff',
-  		navigationbuttoncolor: '#ffffff',
-  		hideurlbar: 'yes',
-  		closebuttoncaption: 'close'
+      location: 'no'
     };
     const browser = this.appBrowser.create(url, '_self', options);
     browser.show();
@@ -200,11 +196,9 @@ export class MainPage implements OnInit {
     this.presentPopover(event);
   }
 
-  addNews(img: string, title: string) {
-    const image = encodeURIComponent(img);
-    this.route.navigate(['my-news', image, title]);
-    // this.storage.setItem('userNews', {img: image, text: title});
-    // this.addedNews();
+  addNews(url: string, title: string, img: string ) {
+    this.databaseService.addNews(url, title, img);
+    this.addedNews();
   }
 
 

@@ -18,11 +18,12 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
+    HttpClientModule,
     CommonModule,
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes),
-    HttpClientModule
+
   ],
   entryComponents: [PopoverComponent],
   declarations: [MainPage, PopoverComponent]

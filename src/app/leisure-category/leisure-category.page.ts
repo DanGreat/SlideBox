@@ -118,6 +118,7 @@ export class LeisureCategoryPage implements OnInit {
 
   async presentLoading() {
     const loading = await this.loader.create({
+      backdropDismiss: true,
       message: 'Loading News...',
       spinner: 'bubbles',
     });

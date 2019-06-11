@@ -15,11 +15,11 @@
         <ion-item-sliding>
           <ion-item *ngFor="let a of newsList">
               <ion-thumbnail >
-                <img [src]="image" />
+                <img src="{{ a.newsImage }}" />
               </ion-thumbnail>
               <ion-card>
                   <ion-card-header>
-                    <ion-card-subtitle>{{ a.title }}</ion-card-subtitle>
+                    <ion-card-subtitle>{{ a.newsTitle }}</ion-card-subtitle>
                   </ion-card-header>
                 </ion-card>
           </ion-item>
@@ -28,7 +28,7 @@
             <ion-item-option color="primary">
               <ion-icon slot="icon-only" name="eye" size="large"></ion-icon>
             </ion-item-option>
-            <ion-item-option color="tertiary">
+            <ion-item-option color="tertiary" (click)="deleteNews(a.id)">
               <ion-icon slot="icon-only" name="md-trash" size="large"></ion-icon>
             </ion-item-option>
           </ion-item-options>

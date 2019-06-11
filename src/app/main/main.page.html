@@ -34,27 +34,27 @@
   </ion-slides>
   <ion-tab-bar>
 
-      <ion-tab-button>
+      <ion-tab-button [routerLink]="'/health-category'">
         <h4>Health</h4>
       </ion-tab-button>
   
-      <ion-tab-button>
+      <ion-tab-button [routerLink]="'/science-category'">
         <h4>Science</h4>
       </ion-tab-button>
 
-      <ion-tab-button>
+      <ion-tab-button [routerLink]="'/sports-category'">
           <h4>Sports</h4>
         </ion-tab-button>
     
-        <ion-tab-button>
+        <ion-tab-button [routerLink]="'/business-category'">
           <h4>Business</h4>
         </ion-tab-button>
 
-        <ion-tab-button>
+        <ion-tab-button [routerLink]="'/tech-category'">
             <h4>Technology</h4>
           </ion-tab-button>
       
-          <ion-tab-button>
+          <ion-tab-button [routerLink]="'/leisure-category'">
             <h4>Entertainment</h4>
           </ion-tab-button>
   
@@ -72,7 +72,7 @@
           <ion-card-content>
             {{ p.description }}
             <ion-label class="usersAction"> 
-                <ion-icon slot="start" name="add" class="addIcon" (click)="addNews(p.urlToImage, p.title)"></ion-icon>
+                <ion-icon slot="start" name="add" class="addIcon" (click)="addNews(p.url, p.title, p.urlToImage)"></ion-icon>
                 <ion-button (click)="readNews(p.url)" size="small" fill="outline" mode="ios">
                   Read
                 </ion-button>
@@ -93,9 +93,9 @@
               </ion-thumbnail>
                  
               <ion-card-header>
-                <ion-card-subtitle><ion-skeleton-text animated style="width: 97%; height: 20px;"></ion-skeleton-text></ion-card-subtitle>
-                <ion-card-title><ion-skeleton-text animated style="width: 86%; height: 20px;"></ion-skeleton-text></ion-card-title>
-                <ion-skeleton-text animated style="width: 72%; height: 20px;"></ion-skeleton-text>
+                <ion-card-subtitle><ion-skeleton-text animated style="width: 97%; height: 16px;"></ion-skeleton-text></ion-card-subtitle>
+                <ion-card-title><ion-skeleton-text animated style="width: 86%; height: 16px;"></ion-skeleton-text></ion-card-title>
+                <ion-skeleton-text animated style="width: 72%; height: 16px;"></ion-skeleton-text>
               </ion-card-header>
             
               <ion-card-content>
