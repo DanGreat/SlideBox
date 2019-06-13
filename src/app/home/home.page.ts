@@ -14,10 +14,10 @@ export class HomePage {
     loop: false
   };
 
-  image1 = 'assets/intro4.svg';
-  image2 = 'assets/intro2.svg';
-  image3 = 'assets/intro3.svg';
-  image4 = 'assets/intro1.svg';
+  image1 = 'assets/intro1.png';
+  image2 = 'assets/intro2.png';
+  image3 = 'assets/intro3.png';
+  image4 = 'assets/intro4.png';
 
   constructor(private route: Router) {}
 

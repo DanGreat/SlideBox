@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-    <ion-tabs (ionTabsDidChange)="selected($event)">
+    <ion-tabs #changeTab (ionTabsDidChange)="selected($event)">
         <ion-tab-bar slot="bottom">
           <ion-tab-button tab="friends">
             <ion-ripple-effect type="bounded"></ion-ripple-effect>

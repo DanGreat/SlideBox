@@ -1,3 +1,1 @@
 CREATE TABLE IF NOT EXISTS news(id INTEGER PRIMARY KEY AUTOINCREMENT, newsUrl TEXT, newsTitle TEXT, newsImg TEXT);
-INSERT INTO news(newsUrl, newsTitle, newsImg) VALUES ('https://news.google.com/__i/rss/rd/articles/CBMic2h0dHBzOi8vd2FwLmJ1c2luZXNzLXN0YW5kYXJkLmNvbS9hcnRpY2xlL25ld3MtYW5pL2Nhbi1zZWl6dXJlcy1iZS1wcmVkaWN0ZWQtYmVmb3JlLXRoZXktaGFwcGVuLTExOTA2MTEwMDQyMV8xLmh0bWzSAXdodHRwczovL3dhcC5idXNpbmVzcy1zdGFuZGFyZC5jb20vYXJ0aWNsZS1hbXAvbmV3cy1hbmkvY2FuLXNlaXp1cmVzLWJlLXByZWRpY3RlZC1iZWZvcmUtdGhleS1oYXBwZW4tMTE5MDYxMTAwNDIxXzEuaHRtbA?oc=5
-', 'Can seizures be predicted before they happen? - Business Standard', 'https://bsmedia.business-standard.com/_media/bs/img/article/default/1190611/full-119061100421.jpg');

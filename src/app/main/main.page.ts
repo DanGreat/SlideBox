@@ -17,6 +17,14 @@ export class MainPage implements OnInit {
   @ViewChild(IonInfiniteScroll) scroll: IonInfiniteScroll;
   allNews: any = [];
   page = 1;
+  tabCategory = [
+    {link: '/health-category', title: 'Health'},
+    {link: '/science-category', title: 'Science'},
+    {link: '/sports-category', title: 'Sports'},
+    {link: '/business-category', title: 'Business'},
+    {link: '/tech-category', title: 'Technology'},
+    {link: '/leisure-category', title: 'Entertainment'}
+  ];
   slideOpt = {
     loop: true,
     autoplay: {

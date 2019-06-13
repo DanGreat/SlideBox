@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-chats',
@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatsPage implements OnInit {
 
+  @ViewChild('changeTab') changeTab;
   tabTitle;
 
   constructor() { }

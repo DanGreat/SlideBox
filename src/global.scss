@@ -9,6 +9,7 @@
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
+@import '~animate.css/animate.min.css';
 @font-face {
     src: url("https://fonts.googleapis.com/css?family=Montserrat");
     font-family: 'Montserrat' sans-serif;
@@ -42,4 +43,20 @@ ion-menu ion-content ion-list ion-item {
 ion-toolbar.neon{
     --background: url(../src/assets/neon.jpg)no-repeat center;
     height: 180px;
+}
+ion-avatar{
+    margin-top: 15px;
+    margin-left: 8px;
+    margin-bottom: 20px;
+    animation: rotating 2s linear infinite;
+    transition: all;
+}
+@keyframes rotating{
+    100% { transform: rotate(360deg);}
+}
+@-webkit-keyframes rotating{
+    100% { transform: rotate(360deg);}
+}
+@-moz-keyframes rotating{
+    100% { transform: rotate(360deg);}
 }

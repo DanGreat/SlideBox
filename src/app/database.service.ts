@@ -25,7 +25,7 @@ export class DatabaseService {
                   this.sql.create({
                     name: 'news.db',
                     location: 'default'
-                  }).then((db: SQLiteObject) => {
+                  }).then((db) => {
                     this.database = db;
                     this.storage.getItem('databaseFilled').then(val => {
 
@@ -75,6 +75,6 @@ export class DatabaseService {
   }
 
   deleteNews(id) {
-    return this.database.executeSql('DELETE FROM news WHERE id = ?', id);
+    return this.database.executeSql('DELETE FROM news WHERE id = ?', [id]);
   }
 }

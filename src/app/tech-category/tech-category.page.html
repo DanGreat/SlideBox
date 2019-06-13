@@ -1,7 +1,7 @@
 <ion-header>
     <ion-toolbar>
       <ion-buttons slot="start">
-        <ion-back-button defaultHref="/category"></ion-back-button>
+        <ion-back-button defaultHref="/main"></ion-back-button>
       </ion-buttons>
       <ion-title>Technology News</ion-title>
     </ion-toolbar>
@@ -70,13 +70,50 @@
                           <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
                       </ion-card-content>
                     </ion-card>
+
+                    
+            <ion-card class="custom-skeleton">
+              <ion-thumbnail>
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-thumbnail>
+                   
+                <ion-card-header>
+                  <ion-card-subtitle><ion-skeleton-text animated style="width: 97%; height: 16px;"></ion-skeleton-text></ion-card-subtitle>
+                  <ion-card-title><ion-skeleton-text animated style="width: 86%; height: 16px;"></ion-skeleton-text></ion-card-title>
+                  <ion-skeleton-text animated style="width: 72%; height: 16px;"></ion-skeleton-text>
+                </ion-card-header>
+              
+                <ion-card-content>
+                    <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+                    <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                    <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+                </ion-card-content>
+              </ion-card>
+
+              <ion-card class="custom-skeleton">
+                <ion-thumbnail>
+                    <ion-skeleton-text animated></ion-skeleton-text>
+                  </ion-thumbnail>
+                     
+                  <ion-card-header>
+                    <ion-card-subtitle><ion-skeleton-text animated style="width: 97%; height: 16px;"></ion-skeleton-text></ion-card-subtitle>
+                    <ion-card-title><ion-skeleton-text animated style="width: 86%; height: 16px;"></ion-skeleton-text></ion-card-title>
+                    <ion-skeleton-text animated style="width: 72%; height: 16px;"></ion-skeleton-text>
+                  </ion-card-header>
+                
+                  <ion-card-content>
+                      <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+                      <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                      <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+                  </ion-card-content>
+                </ion-card>
             </ion-list>
           </div>
         
         
       
        
-          <ion-infinite-scroll threshold="100px" (ionInfinite)="moreHealthNews($event)">
+          <ion-infinite-scroll threshold="100px" (ionInfinite)="moreNews($event)">
               <ion-infinite-scroll-content
                 loadingSpinner="bubbles"
                 loadingText="Loading more news...">
