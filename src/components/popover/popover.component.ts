@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
   selector: 'app-popover',
@@ -11,7 +12,8 @@ export class PopoverComponent implements OnInit {
 
   popoverList: any;
 
-  constructor(private route: Router, private popCtrl: PopoverController) {
+  constructor(private route: Router, private popCtrl: PopoverController,
+              private userAuth: AngularFireAuth) {
     this.popoverList = [
       {icon: 'person', list: 'View Profile', page: 'profile'},
       {icon: 'power', list: 'Logout', page: 'signup'},
@@ -21,7 +23,14 @@ export class PopoverComponent implements OnInit {
   ngOnInit() {}
 
   goto(page: any) {
-    this.popCtrl.dismiss();
-    this.route.navigate([page]);
+    if (page === 'signup') {
+      this.popCtrl.dismiss();
+      this.userAuth.auth.signOut().then(() => {
+        this.route.navigate([page]);
+      });
+    } else {
+      this.popCtrl.dismiss();
+      this.route.navigate([page]);
+    }
   }
 }

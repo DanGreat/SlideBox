@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button defaultHref="/signup"></ion-back-button>
     </ion-buttons>
     <ion-title>Register</ion-title>
   </ion-toolbar>
@@ -50,7 +50,7 @@
               </ion-item>
     
               <ion-item lines="none" class="terms">
-                  <ion-checkbox slot="start" formControlName='terms' [checked]="register.terms"></ion-checkbox>
+                  <ion-checkbox mode="ios" slot="start" formControlName='terms' [checked]="register.terms"></ion-checkbox>
                   <ion-label><small>Agree to our terms and conditions?</small></ion-label>
               </ion-item>
     

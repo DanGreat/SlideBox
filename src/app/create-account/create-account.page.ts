@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup , FormBuilder, Validators } from '@angular/forms';
-import { AngularFirestore } from 'angularfire2/firestore';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 @Component({
   selector: 'app-create-account',
@@ -13,30 +15,26 @@ export class CreateAccountPage implements OnInit {
 
   register: FormGroup;
 
-  userProfileCollection: any;
-  userDoc: any;
-
   passwordType = 'password';
   passwordIcon = 'eye-off';
-
   confirmPasswordType = 'password';
   confirmPasswordIcon = 'eye-off';
 
-  constructor(private fireStore: AngularFirestore,
-              private route: Router,
+  constructor(private route: Router,
               private alert: AlertController,
-              public formBuilder: FormBuilder) {
-    this.userDoc = this.fireStore.collection('Users').doc<any>('users-data');
+              public formBuilder: FormBuilder,
+              private userAuth: AngularFireAuth,
+              private userStore: AngularFirestore,
+              private storage: NativeStorage
+              ) {
     this.register = this.formBuilder.group({
       firstname: new FormControl('', Validators.compose([
         Validators.required,
-        Validators.minLength(6),
         Validators.maxLength(15),
         Validators.pattern('^[a-zA-Z]+')
       ])),
       lastname: new FormControl('', Validators.compose([
         Validators.required,
-        Validators.minLength(6),
         Validators.maxLength(15),
         Validators.pattern('^[a-zA-Z]+')
       ])),
@@ -49,18 +47,15 @@ export class CreateAccountPage implements OnInit {
       email: new FormControl('', Validators.compose([
         Validators.required,
         Validators.minLength(6),
-        Validators.maxLength(15),
-        Validators.pattern('[a-zA-Z0-9.\-@]+@[a-zA-Z0-9\-]+.[a-zA-Z]+$')
+        Validators.maxLength(40),
+        Validators.pattern('[a-zA-Z0-9.-@]+@[a-zA-Z0-9-]+.[a-zA-Z]+$')
       ])),
       password: new FormControl('', Validators.compose([
         Validators.required,
         Validators.minLength(6),
         Validators.maxLength(12),
-        Validators.pattern('^[%*-_@!a-zA-Z0-9]+')
       ])),
-      terms: new FormControl('', Validators.compose([
-        Validators.required
-      ]))
+      terms: new FormControl('', Validators.required)
     });
   }
 
@@ -104,10 +99,10 @@ export class CreateAccountPage implements OnInit {
     await alert.present();
   }
 
-  async presentFailureAlert() {
+  async presentFailureAlert(error: any) {
     const alert = await this.alert.create({
       header: 'Failed!',
-      message: 'Failure creating account.',
+      message: error,
       buttons: [
         {
           text: 'Ok!',
@@ -119,22 +114,27 @@ export class CreateAccountPage implements OnInit {
   }
 
   signUp() {
-    // Add a new document in collection "cities"
-    this.userDoc.set({
-      // Firstname: this.firstName,
-      // Lastname: this.lastName,
-      // Phone_number: this.phone,
-      // Email: this.email,
-      // Password: this.password,
-      // Terms: this.isChecked
-    })
-    .then(() => {
-      this.presentSuccessAlert();
-    })
-    .catch((error: any) => {
-      this.presentFailureAlert();
-      console.error('Error writing document: ', error);
-    });
+    let email;
+    let password;
+    email = this.register.value.email;
+    password = this.register.value.password;
+
+    if (email && password) {
+      this.userAuth.auth.createUserWithEmailAndPassword(email, password).then(() => {
+       // this.storage.setItem('userId', this.userAuth.auth.currentUser.uid);
+        localStorage.setItem('userId', this.userAuth.auth.currentUser.uid);
+        this.userAuth.auth.currentUser.updateProfile({
+          displayName: this.register.value.lastname + " " + this.register.value.firstname,
+          photoURL: ''
+        });
+        this.presentSuccessAlert();
+      }).catch(err => {
+        this.presentFailureAlert(err);
+      });
+    } else {
+      console.log(email);
+      console.log(password);
+    }
   }
 
 }

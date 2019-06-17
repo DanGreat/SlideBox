@@ -35,7 +35,7 @@ ion-menu ion-footer ion-button{
     width: 40%;
 }
 ion-menu ion-content ion-list ion-item {
-    margin-top: 15px;
+    margin-top: 10px;
 }
 .customPop{
     top: 100;
@@ -44,7 +44,7 @@ ion-toolbar.neon{
     --background: url(../src/assets/neon.jpg)no-repeat center;
     height: 180px;
 }
-ion-avatar{
+ion-toolbar.neon ion-avatar {
     margin-top: 15px;
     margin-left: 8px;
     margin-bottom: 20px;
@@ -59,4 +59,9 @@ ion-avatar{
 }
 @-moz-keyframes rotating{
     100% { transform: rotate(360deg);}
+}
+ion-toggle{
+    display: block;
+    margin-left: 50%;
+    float: right;
 }

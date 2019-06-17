@@ -7,6 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
+<ion-content>
     <ion-tabs #changeTab (ionTabsDidChange)="selected($event)">
         <ion-tab-bar slot="bottom">
           <ion-tab-button tab="friends">
@@ -28,4 +29,5 @@
           </ion-tab-button>
         </ion-tab-bar>
       </ion-tabs>
+</ion-content>
 

@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PopoverComponent } from '../../components/popover/popover.component';
 
 import { IonicModule } from '@ionic/angular';
+import { IonicSelectableModule } from 'ionic-selectable';
 
 import { MainPage } from './main.page';
 
@@ -18,6 +19,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
+    IonicSelectableModule, 
     HttpClientModule,
     CommonModule,
     FormsModule,

@@ -28,7 +28,6 @@ export class DatabaseService {
                   }).then((db) => {
                     this.database = db;
                     this.storage.getItem('databaseFilled').then(val => {
-
                       if (val) {
                         this.databaseReady.next(true);
                       } else {

@@ -9,7 +9,7 @@
           slot="start" name="md-contact" color="primary" (click)="userProfile($event)"></ion-icon>
       </ion-buttons>
 
-      <ion-searchbar animated debounce mode="ios"></ion-searchbar>
+      <ion-searchbar animated debounce mode="ios" (ionInput)="searchNews($event)"></ion-searchbar>
       </ion-toolbar>
 </ion-header>
 
@@ -32,13 +32,25 @@
         <ion-img src="../../assets/bg4.jpg"></ion-img>
     </ion-slide>
   </ion-slides>
+
   <ion-tab-bar >
 
       <ion-tab-button *ngFor="let list of tabCategory" class="animated fadeInRightBig delay-1s" [routerLink]='[list.link]'>
         <h4>{{ list.title }}</h4>
       </ion-tab-button>
   
-    </ion-tab-bar>
+  </ion-tab-bar>
+  <!-- <ion-item>
+      <ion-label>Port</ion-label>
+      <ionic-selectable
+        [(ngModel)]="port"
+        [items]="ports"
+        itemValueField="id"
+        itemTextField="name"
+        [canSearch]="true"
+        (onChange)="portChange($event)">
+      </ionic-selectable>
+  </ion-item> -->
 
   <ion-list *ngIf="allNews.length != 0">
     <div *ngFor="let news of allNews" class="news-div">
@@ -150,4 +162,8 @@
         </ion-fab-list>     
     </ion-fab>
 
+<a href="#">
+  <p>App by ExceptionalDev</p>
+  <img src="" />
+</a>
 </ion-content>

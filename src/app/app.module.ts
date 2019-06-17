@@ -15,14 +15,21 @@ import { File } from '@ionic-native/file/ngx';
 import { FileChooser } from '@ionic-native/file-chooser/ngx';
 import { SQLite } from '@ionic-native/sqlite/ngx';
 import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
+
 //Firebase database connection
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { firebaseConfig } from './credentials';
+
 //Form validations
 import { ReactiveFormsModule } from '@angular/forms';
 
+//Database service using SQLite
 import { DatabaseService } from '../app/database.service';
+
+//Search API
+import { IonicSelectableModule } from 'ionic-selectable';
 
 
 @NgModule({
@@ -30,9 +37,11 @@ import { DatabaseService } from '../app/database.service';
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFirestoreModule,
+    AngularFirestoreModule.enablePersistence(),
+    AngularFireAuthModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    IonicSelectableModule
   ],
   providers: [
     SQLite,

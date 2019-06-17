@@ -32,6 +32,12 @@
                 <ion-icon slot="start" name="contacts"></ion-icon>
                 Refer a Friend
               </ion-item>
+
+              <ion-item>
+                <ion-icon slot="start" name="moon"></ion-icon>
+                Theme
+                <ion-toggle mode="md" color="tertiary" [checked]="changeTheme"></ion-toggle>
+              </ion-item>
     
               <ion-item [routerLink]="'/home'">
                 <ion-icon slot="start" name="star"></ion-icon>

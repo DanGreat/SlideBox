@@ -1,3 +1,24 @@
 <ion-content>
-    Friends
+    <div class="chat" *ngFor="let chat of chatRef | async">
+        <div class="me" *ngIf="uid == chat.UserId">
+            {{ chat.Message }}
+        </div>
+
+        <div class="you" *ngIf="uid != chat.UserId">
+            <span class="name">
+                {{ chat.Name }}
+            </span><br />
+            {{ chat.Message }}
+        </div>
+        
+    </div>
 </ion-content>
+<ion-footer>
+    <ion-toolbar >
+        <ion-input type="text" placeholder="Aa..." name="text" [(ngModel)]="text"></ion-input>
+        <ion-button (click)="sendMessage()" fill="clear">
+            <ion-icon slot="end" icon-only name="send" mode="ios" size="large" color="primary">
+            </ion-icon>
+        </ion-button>
+    </ion-toolbar>
+</ion-footer>

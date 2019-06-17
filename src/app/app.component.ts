@@ -4,19 +4,22 @@ import { Platform, MenuController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html'
 })
 export class AppComponent {
+  changeTheme = false;
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private route: Router,
-    private menu: MenuController
+    private menu: MenuController,
+    private userAuth: AngularFireAuth,
   ) {
     this.initializeApp();
   }
@@ -30,6 +33,8 @@ export class AppComponent {
 
   logout() {
       this.menu.close('menu');
-      this.route.navigate(['signup']);
+      this.userAuth.auth.signOut().then(() => {
+        this.route.navigate(['signup']);
+      });
   }
 }

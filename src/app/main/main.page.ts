@@ -7,6 +7,7 @@ import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser/
 import { PopoverController } from '@ionic/angular';
 import { PopoverComponent } from '../../components/popover/popover.component';
 import { DatabaseService } from 'src/app/database.service';
+import { IonicSelectableComponent } from 'ionic-selectable';
 
 @Component({
   selector: 'app-main',
@@ -209,5 +210,14 @@ export class MainPage implements OnInit {
     this.addedNews();
   }
 
+  // searchNews(ev) {
+  //   let list = [];
+  //   let searchTxt = ev.target.value;
+  //   for (let index = 0; index < this.allNews[0].articles.length; index++) {
+  //    list.push(this.allNews[0].articles[index].title.toLowerCase());
+  //     console.log(this.allNews[0].articles[index].title.indexOf(searchTxt));
+      
+  //   }
+  // }
 
 }

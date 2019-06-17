@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 @Component({
   selector: 'app-signup',
@@ -22,7 +24,9 @@ export class SignupPage implements OnInit {
 
   constructor(private route: Router,
               private alert: AlertController,
-              public fromBuilder: FormBuilder) {
+              public fromBuilder: FormBuilder,
+              private userAuth: AngularFireAuth,
+              private userStore: AngularFirestore) {
     this.loginForm = this.fromBuilder.group({
       password: new FormControl('', Validators.compose([
         Validators.required,
@@ -44,21 +48,24 @@ export class SignupPage implements OnInit {
   signIn = () => {
     this.email = this.loginForm.value.email;
     this.password = this.loginForm.value.password;
-    if (!this.email && !this.password) {
-      this.signupFailed();
-    } else {
-      this.route.navigate(['main']);
+    if (this.email && this.password) {
+      this.userAuth.auth.signInWithEmailAndPassword(this.email, this.password).then(() => {
+        this.route.navigate(['main']);
+      }).catch(error => {
+        this.signupFailed(error);
+      });
     }
   }
 
   signUp = () => {
     this.route.navigate(['create-account']);
   }
-  async signupFailed() {
+
+  async signupFailed(error: any) {
     const alert = await this.alert.create({
-      header: 'Error',
-      subHeader: 'Could not sign you up.',
-      message: 'Please provide credentials.',
+      header: 'Error-Login',
+      subHeader: 'Could not log you in.',
+      message: error,
       buttons: ['OK']
     });
 
