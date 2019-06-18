@@ -21,6 +21,8 @@ ion-header ion-toolbar{
 }
 ion-content{
     font-family: 'Montserrat', sans-serif;
+    -webkit-user-select: text;
+    user-select: text;
 }
 ion-menu ion-icon{
     color: var(--ion-color-primary);

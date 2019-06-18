@@ -3,12 +3,25 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/main"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ tabTitle }}</ion-title>
+    <ion-title>Chats</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <ion-tabs #changeTab (ionTabsDidChange)="selected($event)">
+    <div class="chat" *ngFor="let chat of chatRef | async">
+        <div class="me" *ngIf="uid == chat.UserId">
+            {{ chat.Message }}
+        </div>
+
+        <div class="you" *ngIf="uid != chat.UserId">
+            <span class="name">
+                {{ chat.Name }}
+            </span><br />
+            {{ chat.Message }}
+        </div>
+        
+    </div>
+    <!-- <ion-tabs #changeTab (ionTabsDidChange)="selected($event)">
         <ion-tab-bar slot="bottom">
           <ion-tab-button tab="friends">
             <ion-ripple-effect type="bounded"></ion-ripple-effect>
@@ -28,6 +41,16 @@
             <ion-label>Calls</ion-label>
           </ion-tab-button>
         </ion-tab-bar>
-      </ion-tabs>
+      </ion-tabs> -->
 </ion-content>
+<ion-footer>
+    <ion-toolbar >
+        <ion-input type="text" placeholder="Aa..." name="text" [(ngModel)]="text"></ion-input>
+        <ion-button (click)="sendMessage()" fill="clear">
+          <ion-ripple-effect type="bounded"></ion-ripple-effect>
+            <ion-icon slot="icon-only" name="send" mode="ios" size="large" color="primary">
+            </ion-icon>
+        </ion-button>
+    </ion-toolbar>
+</ion-footer>
 

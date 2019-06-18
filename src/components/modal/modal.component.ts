@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { File } from '@ionic-native/file/ngx';
 import { FileChooser } from '@ionic-native/file-chooser/ngx';
+import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 
 
 @Component({
@@ -20,7 +21,8 @@ export class ModalComponent implements OnInit {
 
   constructor(private modal: ModalController,
               private file: File,
-              private fileChooser: FileChooser) { }
+              private fileChooser: FileChooser,
+              private photoView: PhotoViewer) { }
 
   ngOnInit() {
   }
@@ -39,7 +41,9 @@ export class ModalComponent implements OnInit {
       description: this.desc
     });
   }
-
+  viewPhoto() {
+    this.photoView.show('../assets/bg1.jp', 'Profile Picture');
+  }
   choosePhoto() {
     this.fileChooser.open()
     .then((uri) => {

@@ -103,7 +103,7 @@ export class MainPage implements OnInit {
   ngOnInit() {
      // OR you could try this out too
      // this.firstName = this.activatedRoute.snapshot.paramMap.get('username');
-      this.presentLoading();
+      this.getApi();
   }
 
 
@@ -128,16 +128,6 @@ export class MainPage implements OnInit {
       }
       event.target.complete();
     });
-  }
-
-  async presentLoading() {
-    const loading = await this.loader.create({
-      backdropDismiss: true,
-      message: 'Loading News...',
-      spinner: 'bubbles',
-    });
-    await loading.present();
-    this.getApi();
   }
 
   async networkFailure() {

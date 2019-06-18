@@ -15,6 +15,7 @@ import { File } from '@ionic-native/file/ngx';
 import { FileChooser } from '@ionic-native/file-chooser/ngx';
 import { SQLite } from '@ionic-native/sqlite/ngx';
 import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
+import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 
 //Firebase database connection
 import { AngularFireModule } from 'angularfire2';
@@ -53,6 +54,7 @@ import { IonicSelectableModule } from 'ionic-selectable';
     NativeStorage,
     StatusBar,
     SplashScreen,
+    PhotoViewer,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

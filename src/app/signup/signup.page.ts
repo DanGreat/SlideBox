@@ -52,7 +52,7 @@ export class SignupPage implements OnInit {
       this.userAuth.auth.signInWithEmailAndPassword(this.email, this.password).then(() => {
         this.route.navigate(['main']);
       }).catch(error => {
-        this.signupFailed(error);
+        this.signupFailed();
       });
     }
   }
@@ -61,11 +61,11 @@ export class SignupPage implements OnInit {
     this.route.navigate(['create-account']);
   }
 
-  async signupFailed(error: any) {
+  async signupFailed() {
     const alert = await this.alert.create({
       header: 'Error-Login',
       subHeader: 'Could not log you in.',
-      message: error,
+      message: 'Please provide your valid credentials.',
       buttons: ['OK']
     });
 
