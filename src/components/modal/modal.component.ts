@@ -3,6 +3,9 @@ import { ModalController } from '@ionic/angular';
 import { File } from '@ionic-native/file/ngx';
 import { FileChooser } from '@ionic-native/file-chooser/ngx';
 import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
+import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFireAuth } from 'angularfire2/auth';
+
 
 
 @Component({
@@ -22,7 +25,9 @@ export class ModalComponent implements OnInit {
   constructor(private modal: ModalController,
               private file: File,
               private fileChooser: FileChooser,
-              private photoView: PhotoViewer) { }
+              private photoView: PhotoViewer,
+              private userAuth: AngularFireAuth,
+              private store: AngularFirestore) { }
 
   ngOnInit() {
   }
@@ -32,18 +37,34 @@ export class ModalComponent implements OnInit {
   }
 
   saveProfile() {
-    this.modal.dismiss({
-      firstname: this.firstname,
-      lastname: this.lastname,
-      phone: this.phoneNumber,
-      mail: this.email,
-      url: this.url,
-      description: this.desc
+    this.store.collection('Users').doc('users-data').update({
+      Firstname: this.firstname,
+      Lastname: this.lastname,
+      Phone_number: this.phoneNumber,
+      Email: this.email,
+      webUrl: this.url,
+      Description: this.desc
+    }).then(() => {
+      this.modal.dismiss({
+        firstname: this.firstname,
+        lastname: this.lastname,
+        phone: this.phoneNumber,
+        mail: this.email,
+        url: this.url,
+        description: this.desc
+      }).catch(error => {
+        console.log(error);
+      });
+    }).catch(error => {
+      console.log(error);
     });
+
   }
+
   viewPhoto() {
     this.photoView.show('../assets/bg1.jp', 'Profile Picture');
   }
+
   choosePhoto() {
     this.fileChooser.open()
     .then((uri) => {

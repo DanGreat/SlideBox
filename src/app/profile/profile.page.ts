@@ -13,6 +13,8 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
 export class ProfilePage implements OnInit {
 
   fullName;
+  firstName;
+  lastName;
   mailAddress;
   phone;
   webUrl;
@@ -20,10 +22,8 @@ export class ProfilePage implements OnInit {
 
   // firstName = this.fullName.slice(this.fullName.indexOf(' '), this.fullName.length);
   // lastName = this.fullName.slice(0, this.fullName.indexOf(' '));
-  firstName;
-  lastName;
   uid;
-  usersData = [];
+  usersData;
 
   constructor(private modal: ModalController,
               private storage: NativeStorage,
@@ -63,6 +63,8 @@ export class ProfilePage implements OnInit {
 
     mymodal.onDidDismiss().then((response) => {
         const value = response.data;
+        this.firstName = value.firstname;
+        this.lastName = value.lastname;
         this.fullName = value.lastname + " " + value.firstname;
         this.phone = value.phone;
         this.mailAddress = value.mail;
@@ -76,8 +78,6 @@ export class ProfilePage implements OnInit {
     }
 
   editProfile() {
-    if (this.uid === this.userAuth.auth.currentUser.uid) {
       this.editmodal();
-    }
   }
 }

@@ -7,6 +7,7 @@ import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser/
 import { PopoverController } from '@ionic/angular';
 import { PopoverComponent } from '../../components/popover/popover.component';
 import { DatabaseService } from 'src/app/database.service';
+import { Network } from '@ionic-native/network/ngx';
 import { IonicSelectableComponent } from 'ionic-selectable';
 
 @Component({
@@ -97,22 +98,28 @@ export class MainPage implements OnInit {
               private toast: ToastController,
               private appBrowser: InAppBrowser,
               public popover: PopoverController,
-              private databaseService: DatabaseService) {
+              private databaseService: DatabaseService,
+              private network: Network) {
               }
 
   ngOnInit() {
      // OR you could try this out too
-     // this.firstName = this.activatedRoute.snapshot.paramMap.get('username');
-      this.getApi();
+     // this.firstName = this.activatedRoute.snapshot.paramMap.get('username');    
+    this.getApi();
+    setTimeout(() => {
+      if (this.allNews.length === 0 || this.network.Connection.NONE) {
+        this.networkFailure();
+      } else {
+         return;
+      }
+    }, 10000);
   }
-
 
   getApi() {
       this.httpClient
       .get(`https://newsapi.org/v2/top-headlines?country=ng&pageSize=5&page=${this.page}&apiKey=4f6e3e854d414e3b92fdac5c96c04102`)
       .subscribe((response) => {
       this.allNews = Array<any>(response);
-      this.loader.dismiss();
       });
 
   }
@@ -136,9 +143,9 @@ export class MainPage implements OnInit {
       message: 'Please check your internet connection.',
       buttons: [
         {
-          text: 'Okay',
+          text: 'Retry',
           handler: () => {
-            this.loader.dismiss();
+            this.getApi();
           }
         }
       ]
