@@ -1,30 +1,42 @@
+ion-header{
+    z-index: 5 !important;
+}
+ion-item{
+    margin-bottom: 10px;
+}
+div.mainLogo{
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 45px;
+    margin-bottom: 50px;
+}
+div.signupContainer{
+    margin-top: 40px;
+    margin-bottom: -20px;
+}
+ion-card{
+    position: relative;
+    z-index: 100 !important;
+    top: -58px;
+    --background: white;
+    height: 430px;
+}
 ion-button.signInBtn{
     --background: linear-gradient(45deg,var(--ion-color-secondary), var(--ion-color-tertiary));
     margin-top: 38px;
     --color: #fff;
 }
-a{
-    margin-top: 15px;
-    font-size: 13px;
-    float: right;
-    color: blue;
-}
 a.signupText{
-    text-align: center;
-    font-size: 18px;
-    display: block;
-    float: left;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    padding-left: 5px;
     text-decoration: none;
     color: var(--ion-color-primary);
 }
-ion-content{
-    --background: #f8f8f8;
+p{
+    text-align: center;
+    font-size: 16px;
 }
-.signupContainer{
-    margin-top: 10vh;
+h3{
+    text-align: center;
+    color: var(--ion-color-primary);
 }
 ion-item{
     --background: none;
@@ -33,8 +45,12 @@ ion-label{
     font-weight: 400;
 }
 ion-avatar{
+    margin: 0 auto;
+    margin-bottom: 20px;
     animation: rotating 2s linear infinite;
     transition: all;
+    width: 70px;
+    height: 70px;
 }
 @keyframes rotating{
     100% { transform: rotate(360deg);}

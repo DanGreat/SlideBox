@@ -20,12 +20,12 @@ export class MainPage implements OnInit {
   allNews: any = [];
   page = 1;
   tabCategory = [
-    {link: '/health-category', title: 'Health'},
-    {link: '/science-category', title: 'Science'},
-    {link: '/sports-category', title: 'Sports'},
-    {link: '/business-category', title: 'Business'},
-    {link: '/tech-category', title: 'Technology'},
-    {link: '/leisure-category', title: 'Entertainment'}
+    {link: '/health-category', title: 'Health', icon: 'pulse'},
+    {link: '/science-category', title: 'Science', icon: 'beaker'},
+    {link: '/sports-category', title: 'Sports', icon: 'football'},
+    {link: '/business-category', title: 'Business', icon: 'business'},
+    {link: '/tech-category', title: 'Techs', icon: 'construct'},
+    {link: '/leisure-category', title: 'Leisure', icon: 'bicycle'}
   ];
   slideOpt = {
     loop: true,
@@ -90,6 +90,8 @@ export class MainPage implements OnInit {
       },
     }
   };
+
+
   headers: HttpHeaders;
   constructor(private httpClient: HttpClient,
               private loader: LoadingController,
@@ -120,6 +122,7 @@ export class MainPage implements OnInit {
       .get(`https://newsapi.org/v2/top-headlines?country=ng&pageSize=5&page=${this.page}&apiKey=4f6e3e854d414e3b92fdac5c96c04102`)
       .subscribe((response) => {
       this.allNews = Array<any>(response);
+      console.log(this.allNews);
       });
 
   }

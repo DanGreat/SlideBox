@@ -17,6 +17,15 @@ export class SportsCategoryPage implements OnInit {
   allNews: any = [];
   page = 1;
 
+  tabCategory = [
+    {link: '/health-category', title: 'Health', icon: 'pulse'},
+    {link: '/science-category', title: 'Science', icon: 'beaker'},
+    {link: '/sports-category', title: 'Sports', icon: 'football'},
+    {link: '/business-category', title: 'Business', icon: 'business'},
+    {link: '/tech-category', title: 'Techs', icon: 'construct'},
+    {link: '/leisure-category', title: 'Leisure', icon: 'bicycle'}
+  ];
+
   slideOpt = {
     loop: true,
     autoplay: {

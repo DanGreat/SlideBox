@@ -78,8 +78,9 @@ ion-tab-button{
     background: linear-gradient(45deg,var(--ion-color-secondary), var(--ion-color-tertiary)); 
 }
 .custom-skeleton ion-thumbnail{
-    width: 100%;
-    height: 150px;
+    width: 100px;
+    height: 60px;
+    border-radius: 5px;
 }
 .custom-skeleton ion-skeleton-text {
     line-height: 10px;
@@ -87,3 +88,74 @@ ion-tab-button{
   .custom-skeleton ion-skeleton-text:last-child {
     margin-bottom: 3px;
   }
+div.catContainer{
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    padding: 0;
+    margin: 0;
+    -webkit-overflow-scrolling: touch;
+    &::-webkit-scrollbar{
+        display: none
+    } 
+    .catSlide{
+        background: rgba(255, 255, 255, 0.288);
+        height: 100px;
+        width: 120px;
+        display: inline-block;
+        border-radius: 10px !important;
+    }   
+}
+ion-icon.centIcon{
+    display: block;
+    margin: 10px auto;
+}
+ion-card-content ion-icon{
+    font-size: 1.5em;
+}
+
+p{
+    float: right;
+    display: block;
+    clear: both;
+}
+ion-card.news{
+    width: 100%;
+    float: right;
+    height: auto;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    --background: none;
+    box-shadow: none !important;
+}
+ion-thumbnail.news{
+    width: 140px;
+    height: 90px;
+    margin: 0;
+    margin-right: 10px;
+}
+img.news{
+    border-radius: 3px !important;
+    float: left;
+}
+ion-item{
+    margin-bottom: 15px;
+}
+ion-label.label{
+    margin-bottom: 35px;
+}
+ion-label.label a{
+    float: right;
+    font-size: 15px;
+    text-decoration: none;
+}
+h4{
+    float: left;
+    clear: both;
+}
+ion-card-subtitle{
+    font-weight: 700;
+}
+
+

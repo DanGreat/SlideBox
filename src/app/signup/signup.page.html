@@ -1,32 +1,36 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Login to SlideBox</ion-title>
+
+    <div class="mainLogo">
+        <ion-avatar>
+            <img [src]="image1" />
+          </ion-avatar>
+          <h1>SlideBox</h1>
+    </div>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-        <div class="signupContainer">
-          <ion-avatar>
-            <img [src]="image1" />
-          </ion-avatar>
-        <form [formGroup]="loginForm">
+<ion-content fullscreen slot="fixed">
+  <ion-card>
+      <div class="signupContainer">
+        <h3>SIGN IN</h3>
+        <form [formGroup]="loginForm" padding>
             <ion-item>
-              <ion-label position="floating" color="secondary">Email</ion-label>
+              <ion-label position="stacked" color="secondary">Email</ion-label>
               <ion-input type="email" formControlName="email"></ion-input>
             </ion-item>
 
             <ion-item>
-                <ion-label position="floating" color="secondary">Password</ion-label>
+                <ion-label position="stacked" color="secondary">Password</ion-label>
                 <ion-input type="password" formControlName="password"></ion-input>
             </ion-item>
 
-           <ion-label color="primary"><a href="#">Forgot Password?</a></ion-label>
-
-            <ion-button (click)="signIn()" class="signInBtn" fill="block" [disabled]="!loginForm.valid" mode="ios">
+            <ion-button (click)="signIn()" class="signInBtn" fill="block" shape="round" [disabled]="!loginForm.valid" mode="ios">
               <ion-ripple-effect type="bounded"></ion-ripple-effect>
               SIGN IN
             </ion-button>
           </form>
-              <h2 (click)="signUp()"><a href="javascript:void(0)" class="signupText">SIGN UP</a></h2>
-        </div>
+             <p>New User? <a href="" (click)="signUp()" class="signupText">Sign Up</a></p>
+          </div>
+  </ion-card>
 </ion-content>
