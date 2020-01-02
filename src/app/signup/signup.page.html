@@ -1,0 +1,40 @@
+<ion-header no-border>
+  <ion-toolbar>
+
+    <div class="mainLogo">
+        <ion-avatar>
+            <img [src]="image1" />
+          </ion-avatar>
+          <h1>SlideBox</h1>
+    </div>
+  </ion-toolbar>
+</ion-header> 
+
+<ion-content fullscreen slot="fixed">
+  <ion-card>
+      <div class="signupContainer">
+        <h3>SIGN IN</h3>
+        <form [formGroup]="loginForm" padding>
+          <ion-list lines="none">
+            <ion-item>
+              <ion-label position="floating" color="secondary">Email</ion-label>
+              <ion-input type="email" formControlName="email"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="floating" color="secondary">Password</ion-label>
+                <ion-input type="password" formControlName="password"></ion-input>
+            </ion-item>
+        
+            <p>New User? <a href="javascript:void(0)" (click)="signUp()" class="signupText">Sign Up</a></p>
+
+            <ion-button (click)="signIn()" class="signInBtn" expand="block" shape="round" [disabled]="!loginForm.valid" mode="ios">
+              <ion-ripple-effect type="bounded"></ion-ripple-effect>
+              SIGN IN
+            </ion-button>
+         </ion-list>
+        </form>
+            
+        </div>
+  </ion-card>
+</ion-content>

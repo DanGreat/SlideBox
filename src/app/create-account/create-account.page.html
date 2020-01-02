@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/signup"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+      <ion-avatar>
+          <img src="../../assets/icon/favicon.png" />
+      </ion-avatar>
+    
+        <form [formGroup]="register">
+          <ion-list lines="none">
+            <ion-item>
+                <ion-label position="floating" color="secondary">Firstname</ion-label>
+                <ion-input type="text" clear-input="true" formControlName='firstname'></ion-input>
+              </ion-item>
+    
+              <ion-item>
+                  <ion-label position="floating" color="secondary">Lastname</ion-label>
+                  <ion-input type="text" clear-input="true" formControlName='lastname'></ion-input>
+              </ion-item>
+    
+              <ion-item>
+                  <ion-label position="floating" color="secondary">Phone</ion-label>
+                  <ion-input type="tel" clear-input="true" formControlName='phone'></ion-input>
+                  <!-- <p *ngIf="firstname.hasError()">Firstname is required</p> -->
+              </ion-item>
+    
+              <ion-item>
+                  <ion-label position="floating" color="secondary">Email</ion-label>
+                  <ion-input type="email" clear-input="true" formControlName='email'></ion-input>
+              </ion-item>
+    
+              <ion-item>
+                  <ion-label position="floating" color="secondary">Password</ion-label>
+                  <ion-input [type]="passwordType" formControlName='password'></ion-input>
+                  <ion-icon [name]="passwordIcon" (click)="showHidePassword()" slot="end" class="passwordIcon"></ion-icon>
+              </ion-item>
+    
+              <ion-item>
+                  <ion-label position="floating" color="secondary">Confirm Password</ion-label>
+                  <ion-input [type]="confirmPasswordType" formControlName='password'></ion-input>
+                  <ion-icon [name]="confirmPasswordIcon" (click)="showHideConfirmPassword()" slot="end" class="confirmPasswordIcon"></ion-icon>
+              </ion-item>
+    
+              <ion-item lines="none" class="terms">
+                  <ion-checkbox mode="ios" slot="start" formControlName='terms' [checked]="register.terms"></ion-checkbox>
+                  <ion-label><small>Agree to our terms and conditions?</small></ion-label>
+              </ion-item>
+    
+              <ion-button (click)="signUp()" class="signInBtn" expand="block" shape="round" [disabled]="!register.valid" mode="ios">
+                  <ion-ripple-effect type="bounded"></ion-ripple-effect>
+                SIGN UP
+              </ion-button>
+          </ion-list>
+        </form>
+          
+</ion-content>

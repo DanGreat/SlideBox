@@ -1,0 +1,50 @@
+ion-toolbar {
+    // TODO test transparent and fullscreen
+    --background: transparent;
+    --border-color: transparent;
+}
+ion-content{
+    display: grid;
+    place-items: center;
+    background-size: cover;
+}
+ion-slides{
+    height: 100%;
+}
+ion-img{
+    width: 50vw;
+    margin: 0 auto;
+}
+ion-text.slideTxt{
+    text-align: center;
+    margin: 0 auto;
+}
+ion-text.slideTxt p{
+    font-size: 15px;
+    word-wrap: break-word;
+}
+ion-text.slideTxt h1{
+    font-weight: 400;
+    color: var(--ion-color-primary);
+}
+ion-button.startedbtn{
+    // animation: fading 3s infinite ease-in-out;
+    // transition: all;
+    margin-top: 90px;
+}
+// @keyframes fading{
+//     0%{ transform: scale(1);}
+//     50%{ transform: scale(.8);}
+//     100%{ transform: scale(1);}
+// }
+// @-webkit-keyframes fading{
+//     0%{ transform: scale(1);}
+//     50%{ transform: scale(.8);}
+//     100%{ transform: scale(1);}
+// }
+// @-moz-keyframes fading{
+//     0%{ transform: scale(1);}
+//     50%{ transform: scale(.8);}
+//     100%{ transform: scale(1);}
+// }
+

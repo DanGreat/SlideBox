@@ -1,0 +1,35 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/main"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Chats</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="chat" *ngFor="let chat of chatRef | async">
+        <div class="me" *ngIf="uid == chat.UserId">
+            {{ chat.Message }}
+        </div>
+
+        <div class="you" *ngIf="uid != chat.UserId">
+            <span class="name">
+                {{ chat.Name }}
+            </span><br />
+            {{ chat.Message }}
+        </div>
+      </div>
+   
+</ion-content>
+<ion-footer>
+    <ion-toolbar >
+        <ion-input type="text" autocorrect="on" placeholder="Aa..." [(ngModel)]="text"></ion-input>
+        <ion-button (click)="sendMessage()" fill="clear">
+          <ion-ripple-effect type="bounded"></ion-ripple-effect>
+            <ion-icon slot="icon-only" name="send" mode="ios" size="large" color="primary">
+            </ion-icon>
+        </ion-button>
+    </ion-toolbar>
+</ion-footer>
+

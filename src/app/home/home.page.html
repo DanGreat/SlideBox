@@ -1,0 +1,43 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button color='primary' (click)="getStarted()" [hidden]="!showSkip">Skip</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding fullscreen>
+   <ion-slides #slides pager="true" [options]="slideOptions" (ionSlideWillChange)="onSlideChangeStart($event)">
+     <ion-slide class="slide1">
+       <ion-text class="slideTxt">
+          <ion-img [src]="image1"></ion-img>
+         <h1>Welcome Friends!</h1>
+         <p><b>Slidebox</b> is a platform that does what it does perfectly.</p>
+       </ion-text>
+     </ion-slide>
+     <ion-slide class="slide2">
+        <ion-text class="slideTxt">
+           <ion-img [src]="image2"></ion-img>
+          <h1>Explore at your pace!</h1>
+          <p><b>Slidebox</b> gives you the advantage of exploring every of its content at your own pace.</p>
+        </ion-text>
+      </ion-slide>
+      <ion-slide class="slide3">
+          <ion-text class="slideTxt">
+             <ion-img [src]="image3"></ion-img>
+            <h1>Invite Friends!</h1>
+            <p><b>Slidebox</b> makes you connect with your loved ones everytime anytime.</p>
+          </ion-text>
+        </ion-slide>
+    <ion-slide class="slide4">
+        <ion-text class="slideTxt">
+          <ion-img [src]="image4"></ion-img>
+         <ion-button (click)="getStarted()" class="startedbtn" size="medium" shape="round" fill="outline" mode="ios">
+          <ion-ripple-effect type="bounded"></ion-ripple-effect>
+          Get Started!
+          <ion-icon slot="end" name="arrow-forward"></ion-icon>
+        </ion-button>
+        </ion-text>
+    </ion-slide>
+   </ion-slides>
+</ion-content>

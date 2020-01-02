@@ -1,0 +1,66 @@
+ion-header{
+    z-index: 5 !important;
+}
+// ion-toolbar{
+//     --background: url('../../assets/1601.jpg') no-repeat center;
+//     background-size: cover;
+// }
+ion-item{
+    margin-bottom: 20px;
+    --background: none !important;
+}
+div.mainLogo{
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 50px;
+}
+div.signupContainer{
+    margin-top: 45px;
+    margin-bottom: -20px;
+}
+ion-card{
+    position: relative;
+    z-index: 100 !important;
+    top: -40px;
+    --background: white;
+    height:  400px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+ion-button.signInBtn{
+    --background: var(--ion-color-primary);
+    --color: #fff;
+}
+a.signupText{
+    text-decoration: none;
+    color: var(--ion-color-primary);
+}
+p{
+    text-align: center;
+    font-size: 16px;
+}
+h3{
+    text-align: center;
+    color: var(--ion-color-primary);
+}
+ion-label{
+    font-weight: 400;
+}
+ion-avatar{
+    margin: 0 auto;
+    margin-bottom: 20px;
+    animation: rotating 2s linear infinite;
+    transition: all;
+    width: 70px;
+    height: 70px;
+}
+@keyframes rotating{
+    100% { transform: rotate(360deg);}
+}
+@-webkit-keyframes rotating{
+    100% { transform: rotate(360deg);}
+}
+@-moz-keyframes rotating{
+    100% { transform: rotate(360deg);}
+}

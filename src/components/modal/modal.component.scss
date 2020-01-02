@@ -1,0 +1,57 @@
+ion-content{
+    --background: url('../../assets/modal.jpg')no-repeat center;
+    image-rendering: pixelated;
+}
+ion-label{
+    font-weight: 500;
+}
+ion-button{
+    margin-top: 20px;
+}
+form{
+    margin-top: 30px;
+    z-index: 3;
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+ion-list{
+    background: none;
+}
+ion-item{
+    --background: none;
+    margin-top: 10px;
+}
+ion-avatar{
+    width: 100px;
+    height: 100px;
+    margin: 0;
+    float: right;
+}
+ion-icon{
+    --color: #ffffff;
+}
+ion-icon.add{
+    position: relative;
+    top: -30px;
+    left: 8px;
+    --color: white;
+}
+ion-input{
+    color: white;
+}
+ion-textarea{
+    color: white;
+    overflow: hidden !important;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+.overlay{
+    position: absolute;
+    width: 100vw;
+    height: calc(100% + 3em);
+    background: black;
+    opacity: .6;
+    z-index: 0;
+}

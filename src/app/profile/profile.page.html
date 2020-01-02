@@ -1,0 +1,43 @@
+<ion-header no-border>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/main"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Profile</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content padding fullscreen scrollEvents="true" (ionScroll)="scrolling($event)">
+    <ion-avatar [class.fade]="fadeImage">
+      <img src="../../assets/bg1.jpg" />
+    </ion-avatar>
+      <ion-text>
+        <h3>{{ lastName }} {{ firstName }}</h3>
+        <p>{{ descritption }}</p>
+      </ion-text>
+  <ion-list lines="none">
+      <ion-item>
+          <ion-icon slot="start" name="md-person" ></ion-icon>
+        <ion-label>{{ lastName }} {{ firstName }}</ion-label>
+      </ion-item>
+      <ion-item>
+          <ion-icon slot="start" name="md-call"></ion-icon>
+          <ion-label>{{ phone }}</ion-label>
+        </ion-item>
+      <ion-item>
+          <ion-icon slot="start" name="md-mail"></ion-icon>
+          <ion-label>{{ mailAddress }}</ion-label>
+        </ion-item>
+
+        <ion-item>
+            <ion-icon slot="start" name="md-globe" ></ion-icon>
+            <ion-label>{{ webUrl }}</ion-label>
+          </ion-item>
+  </ion-list>
+  <ion-button (click)="editProfile()" fill="outline" shape="round" mode="ios">
+    <ion-ripple-effect type="bounded"></ion-ripple-effect>
+    <ion-icon slot="start" name="md-create"></ion-icon>
+    Edit
+  </ion-button>
+
+</ion-content>
