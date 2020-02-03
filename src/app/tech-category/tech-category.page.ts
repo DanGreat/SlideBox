@@ -50,7 +50,7 @@ export class TechCategoryPage implements OnInit {
     this.platform.ready().then(() => {
       this.getNews();
     }).catch(err=>{
-      console.error("Platform not ready to display new", err);
+      console.error("Platform not ready to display news", err);
     });
    
   }
