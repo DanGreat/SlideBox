@@ -1,0 +1,40 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-title> 
+      News
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="back()" >
+        <ion-icon size="default" slot="start" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <h1 padding>{{ title }}</h1>
+    
+  <ion-card *ngIf="image != null">
+    <ion-img [src]="image"></ion-img>
+  </ion-card>
+
+  <ion-item lines="none" class="label">
+    <p slot="start" class="date">{{ time | date:'short' }}</p>
+    <p slot="end" class="author">{{ author ? author : '' }} </p>
+  </ion-item>
+
+  <div class="modal-news-content" padding>
+    <p> {{ news }}</p>
+  </div>
+
+
+  <ion-button (click)="bookmark()" size="default" padding>
+    <ion-icon  name="save" slot="start"></ion-icon> Save
+  </ion-button>
+
+  <ion-button (click)="viewSource()" fill="clear" size="default" padding class="source">
+    View Source
+  </ion-button>
+
+</ion-content>

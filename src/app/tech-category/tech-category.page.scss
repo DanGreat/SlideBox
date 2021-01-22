@@ -1,3 +1,4 @@
+
 ion-fab{
     margin-right: 5px;
     margin-bottom: 5px;
@@ -8,17 +9,14 @@ ion-fab ion-fab-list ion-fab-button ion-icon{
 ion-list{
     background: none !important;
 }
-ion-item{
-    --padding-start: 0;
-    --color-hover: lightgrey;
-    border: 1px solid rgba(73, 73, 73, 0.39);
-    border-radius: 8px;
-    padding: 10px;
-    margin-bottom: 15px;
-   }
 ion-card{
     --background: transparent !important;
-    box-shadow: 0 0 9px -3px #636161;
+}
+ion-card.news{
+    margin: 0;
+    padding: 0;
+    border-radius: 8px !important;
+    max-height: 160px;
 }
 ion-slides{
     border-radius: 8px;
@@ -35,63 +33,15 @@ ion-slide{
 ion-refresher{
     background: #fefefe;
 }
-ion-badge{
-    height: 10px;
-    --background: red;
-    --padding-top: 0;
-    --padding-bottom: 2px;
-    --padding-start: 1px;
-    --padding-end: 2px;
-    position: relative;
-    top: -7px;
-    left: -13px;
-    font-size: 10px;
-}
-.usersAction{
-    float: right;
-    margin-top: 20px;
-    margin-bottom: 15px;
-}
-.usersAction ion-icon{
-    position: relative;
-    top: 14px;
-    margin-right: 8px;
-    font-size: 2rem;
-    color: var(--ion-color-primary);
-}
-.usersAction ion-button{
-    font-weight: 300;
-}
-ion-tab-bar{
-    width: 100vw;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    white-space: nowrap;
-    justify-content: left;
-    -webkit-overflow-scrolling: touch;
-    margin-top: 15px;
-    margin-bottom: 3px;
-    border: none;
-    outline: none;
-}
-ion-tab-button{
-    border: 1px solid rgb(179, 175, 175);
-    box-shadow: 0 0 3px grey;
-    border-radius: 8px;
-    margin-left: 4px;
-    margin-right: 4px;
-    padding-top: 0;
-    text-align: center;
-    color: #ffffff;
-    background: linear-gradient(45deg,var(--ion-color-secondary), var(--ion-color-tertiary)); 
-}
 div.custom-skeleton{
     padding: 0;
     margin: 0;
-    border-radius: 5px;
+    height: 200px;
 }
 div.custom-skeleton ion-thumbnail{
-    border-radius: 8px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 .custom-skeleton ion-skeleton-text {
     line-height: 12px;
@@ -100,17 +50,51 @@ div.custom-skeleton ion-thumbnail{
 .custom-skeleton ion-skeleton-text:last-child {
   margin-bottom: 3px;
  }
+div.catContainer{
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    margin: 0;
+    -webkit-overflow-scrolling: touch;
+    &::-webkit-scrollbar{
+        display: none
+    } 
+    .catSlide{
+        background: rgba(255, 255, 255, 0.288);
+        height: 100px;
+        width: 110px;
+        margin-left: 1px;
+        display: inline-block;
+        border-radius: 8px !important;
+        box-shadow: 0 0 6px -3px grey;
+    }
+    .catSlide ion-card-header{
+        font-size: 21px;
+    } 
+    .catSlide:hover{
+        transition: all .2s ease-out;
+        background: linear-gradient(45deg, #2dc0cc, #1aefb4);;
+        color: #ffffff !important;
+    }
+    .catSlide:active{
+        transition: all .2s ease-in-out;
+        transform: scale(.9);
+    }  
+}
 div.cta{
     position: absolute;
     text-align: left;
     text-overflow: ellipsis;
-    bottom: 0;
+    bottom: -1px;
     padding-left: 10px;
     color: white;
+    background: black;
+    opacity: 0.7;
 }
 div.cta p{
-    font-size: calc(100% - 2px);
-    margin-top: 0;
+    font-size: 0.8em;
+    margin-top: 2px;
+    margin-bottom: 4px;
     line-height: 1.3;
     width: 100%;
     white-space: normal;
@@ -123,47 +107,27 @@ ion-icon.centIcon{
     display: block;
     margin: 10px auto;
 }
-ion-card-content ion-icon{
-    font-size: 1.5em;
-}
-ion-card-title{
-    font-size: calc(100% - 0.2px);
-}
-ion-card.news{
-    width: 65%;
-    float: left;
-    height: 6.2em;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
-    background: none;
-    box-shadow: none !important;
-}
-ion-thumbnail.news{
-    width: 40%;
-    height: 90px;
-    margin: 0;
-}
-img.news{
-    border-radius: 5px !important;
-    float: left;
-}
-// ion-label{
-//     --color: #fefefe;
-//     font-size: 20px;
-//     font-weight: 600;
-//     text-align: center;
-
-// }
 ion-label.label{
     margin-bottom: 35px;
 }
-ion-label.label h4{
+ion-label.label h4, ion-item.label h4{
     font-size: 1.1em;
     margin-top: .7em;
     margin-bottom: 0.3em;
 }
-ion-card-subtitle{
-    font-weight: 500;
-    margin-top: -10px;
+ion-item.label{
+    --padding-start: 0px;
+    margin-right: -11px;
+    
 }
+div.last-container{
+    border-bottom: 0.2px solid #aaaaaa;
+    margin-bottom: 40px;
+}
+p.date{
+    margin-top: 8px;
+    font-size: 15px;
+    opacity: .8;
+}
+
+

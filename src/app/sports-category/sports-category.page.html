@@ -1,12 +1,16 @@
 <ion-header no-border>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button defaultHref="/categories"></ion-back-button>
-      </ion-buttons>
-      <ion-title>Sport News</ion-title>
-    </ion-toolbar>
-  </ion-header>
-      
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/categories"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Sports News</ion-title>
+    <ion-buttons slot="end">
+      <ion-icon size="large"  
+      slot="start" name="md-contact" color="primary" (click)="userProfile($event)"></ion-icon>
+  </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content padding>
   <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
     <ion-refresher-content
@@ -15,8 +19,7 @@
   </ion-refresher>
 
 <ion-slides pager="false" [options]="slidesOpts">
-    <ion-slide *ngFor="let news of firstNews">
-      <!-- <app-image-shell [src]=""></app-image-shell> -->
+    <ion-slide *ngFor="let news of firstNews" (click)="readNews(news.urlToImage, news.content, news.title, news.url, news.publishedAt, news.author)">
       <ion-img src="{{news.urlToImage}}"></ion-img>
       <div class="cta">
         <p>{{ news.title }}</p>
@@ -28,123 +31,127 @@
       <h4 slot="start">News for you</h4>
   </ion-label>
 
-<ion-list *ngIf="allNews.length != 0" lines="none">     
-    <ng-container *ngFor="let news of allNews" class="news-div">
-        <ion-item *ngFor="let p of news.articles" (click)="readNews(p.url)" lines="no-line"  class="news-items">
-            <ion-thumbnail class="news">
-                <img src="{{ p.urlToImage }}" class="news" />
-            </ion-thumbnail>
-          <ion-card class="news">
-              <ion-card-header>
-                  <ion-card-subtitle>{{ p.title }}</ion-card-subtitle>
-              </ion-card-header>                    
-          </ion-card> 
-        </ion-item>
-    </ng-container>
-</ion-list>
+  <ion-list >
+    <ng-container *ngFor="let news of allNews">
+      <div *ngFor="let p of news.articles" (click)="readNews(p.urlToImage, p.content, p.title, p.url, p.publishedAt, p.author)" class="last-container">
+      
+          <ion-card class="news" *ngIf="p.urlToImage != null">
+            <ion-img src="{{ p.urlToImage }}"></ion-img>
+          </ion-card>
+       
+          <ion-item lines="none" class="label">
+            <p slot="start" class="date">{{ p.publishedAt | date:'short' }}</p>
+            <p slot="end" class="author">{{ p.author ? p.author : '' }} </p>
+          </ion-item>
+        <p> {{ p.title }} </p>
+        </div>
+    </ng-container> 
+  </ion-list>
 
 <div *ngIf="allNews.length == 0" class="alt">
-    <ion-list lines="none">
-        
+    <ion-list >
+    
         <div class="custom-skeleton">
-            <ion-item>
-                <ion-thumbnail class="news">
-                    <ion-skeleton-text animated></ion-skeleton-text>
-                </ion-thumbnail>
-              <ion-card class="news">
-                  <ion-card-header>
-                      <ion-card-subtitle>
-                          <ion-skeleton-text animated style="width: 100%; height: 12px;"></ion-skeleton-text>
-                          <ion-skeleton-text animated style="width: 79%; height: 12px;"></ion-skeleton-text>
-                          <ion-skeleton-text animated style="width: 64%; height: 12px;"></ion-skeleton-text>
-                          <ion-skeleton-text animated style="width: 50%; height: 12px;"></ion-skeleton-text>
-                      </ion-card-subtitle>
-                  </ion-card-header>
-              </ion-card>
-              
-        </ion-item>
-      </div>
-      <div class="custom-skeleton">
-          <ion-item>
-              <ion-thumbnail class="news">
-                  <ion-skeleton-text animated></ion-skeleton-text>
-                </ion-thumbnail>
-            <ion-card class="news">
-                <ion-card-header>
-                    <ion-card-subtitle>
-                      <ion-skeleton-text animated style="width: 100%; height: 12px;"></ion-skeleton-text>
-                      <ion-skeleton-text animated style="width: 79%; height: 12px;"></ion-skeleton-text>
-                      <ion-skeleton-text animated style="width: 64%; height: 12px;"></ion-skeleton-text>
-                      <ion-skeleton-text animated style="width: 50%; height: 12px;"></ion-skeleton-text>
-                    </ion-card-subtitle>
-                </ion-card-header>
-            </ion-card>
+            <ng-container>
             
-      </ion-item>
-    </div>
-    <div class="custom-skeleton">
-        <ion-item>
-            <ion-thumbnail class="news">
-                <ion-skeleton-text animated></ion-skeleton-text>
-              </ion-thumbnail>
-          <ion-card class="news">
-              <ion-card-header>
-                  <ion-card-subtitle>
-                    <ion-skeleton-text animated style="width: 100%; height: 12px;"></ion-skeleton-text>
-                    <ion-skeleton-text animated style="width: 79%; height: 12px;"></ion-skeleton-text>
-                    <ion-skeleton-text animated style="width: 64%; height: 12px;"></ion-skeleton-text>
-                    <ion-skeleton-text animated style="width: 50%; height: 12px;"></ion-skeleton-text>
-                  </ion-card-subtitle>
-              </ion-card-header>
-          </ion-card>
-          
-    </ion-item>
-  </div>
-  <div class="custom-skeleton">
-      <ion-item>
-          <ion-thumbnail class="news">
-              <ion-skeleton-text animated></ion-skeleton-text>
-            </ion-thumbnail>
-        <ion-card class="news">
-            <ion-card-header>
-                <ion-card-subtitle>
-                  <ion-skeleton-text animated style="width: 100%; height: 12px;"></ion-skeleton-text>
-                  <ion-skeleton-text animated style="width: 79%; height: 12px;"></ion-skeleton-text>
-                  <ion-skeleton-text animated style="width: 64%; height: 12px;"></ion-skeleton-text>
-                  <ion-skeleton-text animated style="width: 50%; height: 12px;"></ion-skeleton-text>
-                </ion-card-subtitle>
-            </ion-card-header>
-        </ion-card>
-        
-  </ion-item>
-</div>
-<div class="custom-skeleton">
-    <ion-item>
-        <ion-thumbnail class="news">
-            <ion-skeleton-text animated></ion-skeleton-text>
-          </ion-thumbnail>
-      <ion-card class="news">
-          <ion-card-header>
-              <ion-card-subtitle>
+                  <ion-thumbnail >
+                      <ion-skeleton-text animated></ion-skeleton-text>
+                  </ion-thumbnail>
+              
+              <p slot="start">
+                <ion-skeleton-text animated style="width: 20%; height: 12px;"></ion-skeleton-text>
+              </p>
+              <p>
                 <ion-skeleton-text animated style="width: 100%; height: 12px;"></ion-skeleton-text>
                 <ion-skeleton-text animated style="width: 79%; height: 12px;"></ion-skeleton-text>
                 <ion-skeleton-text animated style="width: 64%; height: 12px;"></ion-skeleton-text>
                 <ion-skeleton-text animated style="width: 50%; height: 12px;"></ion-skeleton-text>
-              </ion-card-subtitle>
-          </ion-card-header>
-      </ion-card>
+              </p>
+            </ng-container>             
+      </div>
+
+      <div class="custom-skeleton">
+        <ng-container>
+              <ion-thumbnail >
+                  <ion-skeleton-text animated></ion-skeleton-text>
+              </ion-thumbnail>
+          
+          <p slot="start">
+            <ion-skeleton-text animated style="width: 20%; height: 12px;"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text animated style="width: 100%; height: 12px;"></ion-skeleton-text>
+            <ion-skeleton-text animated style="width: 79%; height: 12px;"></ion-skeleton-text>
+            <ion-skeleton-text animated style="width: 64%; height: 12px;"></ion-skeleton-text>
+            <ion-skeleton-text animated style="width: 50%; height: 12px;"></ion-skeleton-text>
+          </p>
+        </ng-container>             
+  </div>
+
+  <div class="custom-skeleton">
+    <ng-container>
+          <ion-thumbnail >
+              <ion-skeleton-text animated></ion-skeleton-text>
+          </ion-thumbnail>
       
-</ion-item>
+      <p slot="start">
+        <ion-skeleton-text animated style="width: 20%; height: 12px;"></ion-skeleton-text>
+      </p>
+      <p>
+        <ion-skeleton-text animated style="width: 100%; height: 12px;"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 79%; height: 12px;"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 64%; height: 12px;"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 50%; height: 12px;"></ion-skeleton-text>
+      </p>
+    </ng-container>             
 </div>
+
+<div class="custom-skeleton">
+<ng-container>
+
+      <ion-thumbnail >
+          <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-thumbnail>
+  
+  <p slot="start">
+    <ion-skeleton-text animated style="width: 20%; height: 12px;"></ion-skeleton-text>
+  </p>
+  <p>
+    <ion-skeleton-text animated style="width: 100%; height: 12px;"></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 79%; height: 12px;"></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 64%; height: 12px;"></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 50%; height: 12px;"></ion-skeleton-text>
+  </p>
+</ng-container>             
+</div>
+
+<div class="custom-skeleton">
+<ng-container>
+      <ion-thumbnail >
+          <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-thumbnail>
+  
+  <p slot="start">
+    <ion-skeleton-text animated style="width: 20%; height: 12px;"></ion-skeleton-text>
+  </p>
+  <p>
+    <ion-skeleton-text animated style="width: 100%; height: 12px;"></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 79%; height: 12px;"></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 64%; height: 12px;"></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 50%; height: 12px;"></ion-skeleton-text>
+  </p>
+</ng-container>             
+</div>
+      
 
 </ion-list>
 </div>
 
 
 
-  <ion-infinite-scroll threshold="100px" (ionInfinite)="moreNews($event)">
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="moreNews($event)" [hidden]="allNews.length < 1">
       <ion-infinite-scroll-content
-        loadingSpinner="bubbles"
+        loadingSpinner="crescent"
         loadingText="Loading more news...">
       </ion-infinite-scroll-content>
   </ion-infinite-scroll>

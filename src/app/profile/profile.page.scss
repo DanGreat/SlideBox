@@ -1,17 +1,16 @@
-ion-toolbar {
-    --background: url('../../assets/neon.jpg')no-repeat center;
+div.header{
+    background: url('../../assets/neon.jpg')no-repeat center;
     background-size: cover;
-    height: 180px;
-    
+    width: 100%;
+    height: 55vh;
+    padding: 30px;
+    color: #ffffff;
 }
+
 ion-avatar{
-    position: relative;
     bottom: 75px;
-    z-index: 10;
     width: 120px;
     height: 120px;
-    --border-radius: 50%;
-    border: 5px solid #ffffff;
     margin: 0 auto;
 }
 ion-button{
@@ -21,11 +20,14 @@ ion-button{
 ion-text{
     position: relative;
     text-align: center;
-    bottom: 75px;
+    bottom: 0px;
 }
 ion-list{
     margin-top: -70px;
-    border-radius: 8px;
+    border-radius: 10px;
+}
+ion-item{
+    color: darkgray;
 }
 ion-icon.userEdit{
     position: relative;
@@ -39,9 +41,6 @@ ion-icon{
 ion-label{
     float: right;
     text-align: right;
-}
-ion-toolbar{
-    color: #ffffff;
 }
 ion-content{
     background: linear-gradient(270deg, transparent, rgba(0,0,0,1));

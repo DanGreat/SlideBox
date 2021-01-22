@@ -9,13 +9,14 @@ import { DatabaseService } from 'src/services/database.service';
 })
 export class MyNewsPage implements OnInit {
 
-  newsList: any[] = [];
+  newsList: any[];
 
   constructor(private databaseService: DatabaseService
 ) { }
 
   ngOnInit() {
      this.databaseService.getDatabaseState().subscribe(isReady => {
+       console.log('Db is ready: ', isReady);
        if (isReady) {
         this.loadNews();
        }

@@ -36,10 +36,15 @@ import { APIService } from '../services/api.service';
 import { IonicSelectableModule } from 'ionic-selectable';
 import { ExpandableHeaderDirective } from './expandable-header.directive';
 
+//Shared Components
+import { NewsModalComponent } from 'src/components/news-modal/news-modal.component';
+import { PopoverComponent } from 'src/components/popover/popover.component';
+
+
 
 @NgModule({
-  declarations: [AppComponent, ExpandableHeaderDirective],
-  entryComponents: [],
+  declarations: [AppComponent, ExpandableHeaderDirective, NewsModalComponent, PopoverComponent],
+  entryComponents: [NewsModalComponent, PopoverComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule.enablePersistence(),
@@ -47,8 +52,7 @@ import { ExpandableHeaderDirective } from './expandable-header.directive';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    IonicSelectableModule
-    
+    IonicSelectableModule,
   ],
   providers: [
     SQLite,

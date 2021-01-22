@@ -7,15 +7,21 @@
     </ion-toolbar>
   </ion-header>
 
-<ion-content padding fullscreen scrollEvents="true" (ionScroll)="scrolling($event)">
+  
+
+<ion-content fullscreen scrollEvents="true" (ionScroll)="scrolling($event)">
+  <div class="header">
     <ion-avatar [class.fade]="fadeImage">
-      <img src="../../assets/bg1.jpg" />
+      <img src="../../assets/icon/favicon.png" />
     </ion-avatar>
-      <ion-text>
-        <h3>{{ lastName }} {{ firstName }}</h3>
-        <p>{{ descritption }}</p>
-      </ion-text>
-  <ion-list lines="none">
+
+    <ion-text>
+      <h3>{{ lastName }} {{ firstName }}</h3>
+      <p>{{ descritption }}</p>
+    </ion-text>
+  </div>
+      
+  <ion-list lines="none" padding>
       <ion-item>
           <ion-icon slot="start" name="md-person" ></ion-icon>
         <ion-label>{{ lastName }} {{ firstName }}</ion-label>
@@ -34,7 +40,7 @@
             <ion-label>{{ webUrl }}</ion-label>
           </ion-item>
   </ion-list>
-  <ion-button (click)="editProfile()" fill="outline" shape="round" mode="ios">
+  <ion-button (click)="editProfile()" fill="outline" shape="round" mode="ios" padding>
     <ion-ripple-effect type="bounded"></ion-ripple-effect>
     <ion-icon slot="start" name="md-create"></ion-icon>
     Edit

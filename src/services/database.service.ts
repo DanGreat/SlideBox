@@ -26,6 +26,7 @@ export class DatabaseService {
                     name: 'news.db',
                     location: 'default'
                   }).then((db) => {
+                    console.log('Created Db: ', db);
                     this.database = db;
                     this.storage.getItem('databaseFilled').then(val => {
                       if (val) {
@@ -40,6 +41,7 @@ export class DatabaseService {
 
   fillDatabase() {
     this.http.get('assets/news.sql').subscribe(sql => {
+      console.log('SQL to insert: ', sql);
       this.sqlPorter.importSqlToDb(this.database, sql.toString()).then(data => {
         this.databaseReady.next(true);
         this.storage.setItem('databaseFilled', true);
@@ -52,23 +54,24 @@ export class DatabaseService {
   }
 
   addNews(url, title, img) {
-    let newsData = [url, title, img];
+    const newsData = [url, title, img];
     this.database.executeSql('INSERT INTO news (newsUrl, newsTitle, newsImg) VALUES (?, ?, ?)', newsData).then(res => {
+      console.log('Added response: ', res);
       return res;
     });
   }
 
   getAllNews() {
     return this.database.executeSql('SELECT * FROM news').then(data => {
-      let newsData = [];
-      if(data.rows.length > 0) {
+      const newsData = [];
+      if (data.rows.length > 0) {
         for (let index = 0; index < data.rows.length; index++) {
           newsData.push({url: data.rows.item(index).newsUrl, title: data.rows.item(index).newsTitle, img: data.rows.item(index).newsImg });
         }
       }
       return newsData;
     }, err => {
-      console.log('Error ' + err)
+      console.log('Error getting news from database: ', err);
       return [];
     });
   }

@@ -84,4 +84,6 @@ export class SignupPage implements OnInit {
 
     await load.present();
   }
+
+  
 }

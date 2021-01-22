@@ -19,7 +19,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    IonicSelectableModule, 
+    IonicSelectableModule,
     HttpClientModule,
     CommonModule,
     FormsModule,
@@ -27,7 +27,6 @@ const routes: Routes = [
     RouterModule.forChild(routes),
 
   ],
-  entryComponents: [PopoverComponent],
-  declarations: [MainPage, PopoverComponent]
+  declarations: [MainPage]
 })
 export class MainPageModule {}

@@ -22,7 +22,7 @@
         font-family: 'Montserrat', sans-serif;
         -webkit-user-select: text;
         user-select: text;
-        
+        --offset-top: 1px !important;
     }
     ion-menu ion-title{
         color: #ffffff;
@@ -59,6 +59,15 @@
     }
     *::-webkit-scrollbar{
         display: none;
+    }
+    .alert-sub-title.sc-ion-alert-md, .alert-title.sc-ion-alert-md {
+        color: #000 !important;
+    }
+    .alert-input-group.sc-ion-alert-md, .alert-message.sc-ion-alert-md {
+        color: #212121 !important;
+    }
+    .alert-radio-label.sc-ion-alert-md{
+        color: #292929 !important;
     }
 }
 

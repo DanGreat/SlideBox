@@ -1,6 +1,14 @@
 <ion-list lines="none">
+  <ion-item>
+    <ion-icon slot="start" name="globe"></ion-icon>
+    <ion-label>Country</ion-label>
+    <ion-select [(ngModel)]="selectedCountry"  placeholder="Select Country" (ionChange)="selectCountry($event)">
+      <ion-select-option *ngFor="let country of allCountries" [value]="country.title">{{ country.name }}</ion-select-option>
+    </ion-select>
+  </ion-item>
   <ion-item *ngFor="let item of popoverList" (click)="goto(item.page)">
     <ion-icon slot="start" name="{{item.icon}}"></ion-icon>
     <ion-label>{{ item.list }}</ion-label>
   </ion-item>
+
 </ion-list>

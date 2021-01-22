@@ -1,13 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
-import { IonInfiniteScroll, LoadingController, Platform } from '@ionic/angular';
+import { IonInfiniteScroll, Platform, ModalController, PopoverController, LoadingController } from '@ionic/angular';
 import { AlertController, ToastController} from '@ionic/angular';
-import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser/ngx';
 import { BookmarkService } from 'src/services/bookmark.service';
-import { Network } from '@ionic-native/network/ngx';
-import { HttpClient } from '@angular/common/http';
 // import { IonicSelectableComponent } from 'ionic-selectable';
-import { APIService } from "../../services/api.service";
+import { APIService } from '../../services/api.service';
+import { NewsModalComponent } from 'src/components/news-modal/news-modal.component';
+import { PopoverComponent } from 'src/components/popover/popover.component';
+import { CountryServiceService } from '../../services/country-service.service';
 
 @Component({
   selector: 'app-tech-category',
@@ -19,97 +18,123 @@ export class TechCategoryPage implements OnInit {
 
   firstNews: any = [];
   allNews: any = [];
+  country = 'ng';
+  category = 'technology';
 
   page = 1;
-     
+
     slidesOpts = {
       loop: true,
       initialSlide: 1,
       speed: 400,
       autoplay: {
-        delay: 10000
+        delay: 6000
       }
-    }
+    };
 
   constructor(private apiService: APIService,
-              private loader: LoadingController,
-              private route: Router,
-              private http: HttpClient,
               private alert: AlertController,
               private toast: ToastController,
-              private appBrowser: InAppBrowser,
+              public popover: PopoverController,
               private bookmark: BookmarkService,
-              private network: Network,
-              private platform: Platform) {}
+              private modal: ModalController,
+              private platform: Platform,
+              private loader: LoadingController,
+              private countryService: CountryServiceService) {
+                // Get saved country from native storage instead
+                this.country = localStorage.getItem('COUNTRY');
+              }
 
-  ngOnInit() { 
-
-    // this.header.append("Accept", 'application/json');
-    // this.header.append('Content-Type', 'application/json' );
-
+  ngOnInit() {
     this.platform.ready().then(() => {
-      this.getNews();
-    }).catch(err=>{
-      console.error("Platform not ready to display news", err);
+      this.getNews(this.country);
+      this.countryService.country$.subscribe((country) => {
+        this.popover.dismiss();
+        this.loading();
+        this.getNews(country);
+        this.country = country;
+      });
+    }).catch(err => {
+      console.error('Platform not ready to display new', err);
     });
-   
+
   }
 
-  getNews() {
-    this.http
-    // tslint:disable-next-line: max-line-length
-    .get(`https://newsapi.org/v2/top-headlines?country=ng&category=technology&pageSize=8&page=${this.page}&apiKey=4f6e3e854d414e3b92fdac5c96c04102`)
-    .subscribe((response) => {
-      this.allNews = Array<any>(response);
-      console.log("Tech News", this.allNews);
+  getNews(country: string) {
+    this.apiService.loadCategoryNews(this.page, this.category, country).subscribe((result) => {
+      this.allNews = Array<any>(result);
+      console.log('First News', this.allNews);
       this.firstNews = this.allNews[0].articles.splice(0, 3);
-     });
+      this.loader.dismiss();
+    },
+    (error) => {
+      if (error.ok === false) {
+        if (this.loader) { this.loader.dismiss(); }
+        this.networkFailure();
+      }
+    });
   }
 
   moreNews(event: any) {
     this.page++;
-    this.http
-    // tslint:disable-next-line: max-line-length
-    .get(`https://newsapi.org/v2/top-headlines?country=ng&category=technology&pageSize=5&page=${this.page}&apiKey=4f6e3e854d414e3b92fdac5c96c04102`)
-    .subscribe((response) => {
+    this.apiService.loadCategoryNews(this.page, this.category, this.country)
+      .subscribe((response) => {
       const more: any = Array<any>(response);
       for (const article of more) {
         this.allNews.push(article);
       }
       event.target.complete();
-    });
+    },
+    (error) => {
+      if (error.ok === false) {
+        this.networkFailure();
+      }
+    }
+    );
+
   }
 
   refresh(e) {
-    this.http
-    .get(`https://newsapi.org/v2/top-headlines?country=ng&category=technology&apiKey=4f6e3e854d414e3b92fdac5c96c04102`)
-    .subscribe((response)=>{
+    this.apiService.loadCategoryNews(this.page, this.category, this.country)
+    .subscribe((response) => {
       this.allNews = Array<any>(response);
-    })
+    },
+    (error) => {
+      if (error.ok === false) {
+        this.networkFailure();
+      }
+    });
     e.target.complete();
   }
 
-  readNews(url: string) {
-    const options: InAppBrowserOptions = {
-      location: 'no'
-    };
-    const browser = this.appBrowser.create(url, '_self', options);
-    browser.show();
+
+  async readNews(imageUrl, content, titleHead, url, timeValue, from) {
+    const mymodal = await this.modal.create({
+        component: NewsModalComponent,
+        backdropDismiss: false,
+        componentProps: {
+          image: imageUrl,
+          news: content,
+          title: titleHead,
+          sourceUrl: url,
+          time: timeValue,
+          author: from
+        },
+        animated: true
+      });
+
+    return await mymodal.present();
+
   }
 
-  async networkFailure() {
-    const network = await this.alert.create({
-      header: 'Network Error',
-      message: 'Please check your internet connection.',
-      buttons: [
-        {
-          text: 'Retry',
-          handler: () => {
-            // this.getNews();
-          }
-        }
-      ]
+  async loading() {
+    const loader = await this.loader.create({
+      spinner: 'crescent',
+      message: 'Please wait...',
+      backdropDismiss: false
     });
+
+    return await loader.present();
   }
 
   async addedNews() {
@@ -129,9 +154,45 @@ export class TechCategoryPage implements OnInit {
     toast.present();
   }
 
-  // addNews(url: string, title: string, img: string ) {
-  //   this.databaseService.addNews(url, title, img);
-  //   this.addedNews();
-  // }
+  async presentPopover(ev: any) {
+    const popover = await this.popover.create({
+      component: PopoverComponent,
+      backdropDismiss: true,
+      showBackdrop: false,
+      event: ev,
+      animated: true,
+      cssClass: 'customPop'
+    });
+
+    return await popover.present();
+  }
+
+  userProfile(event: any) {
+    this.presentPopover(event);
+  }
+
+  async networkFailure() {
+    const networkStatus = await this.alert.create({
+      header: 'Network Error',
+      message: 'Please check your internet connection.',
+      backdropDismiss: false,
+      animated: true,
+      buttons: [
+        {
+          text: 'Retry!',
+          handler: () => {
+            this.getNews(this.country);
+          }
+        }
+      ]
+    });
+
+    return await networkStatus.present();
+  }
+              // addNews(url: string, title: string, img: string ) {
+              //   this.databaseService.addNews(url, title, img);
+              //   this.addedNews();
+              // }
+
 
 }

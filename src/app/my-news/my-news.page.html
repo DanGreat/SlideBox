@@ -4,14 +4,18 @@
       <ion-back-button defaultHref="/main"></ion-back-button>
     </ion-buttons>
     <ion-title>My News</ion-title>
-  </ion-toolbar>
+   </ion-toolbar>
+   <ion-searchbar animated debounce mode="ios" (ionInput)="searchNews($event)" placeholder="Search Categories"></ion-searchbar>
 </ion-header>
 
 <ion-content >
   <div *ngIf="noNews">
     You have no news on your list.
   </div>
-  <ion-list>    
+  <ion-list>
+    <ion-list-header lines="inset">
+      <ion-label>Health</ion-label>
+    </ion-list-header>
         <ion-item-sliding>
           <ion-item *ngFor="let a of newsList">
               <ion-thumbnail >

@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXIST news (
+    id INTEGER AUTOINCREMENT PRIMARY KEY,
+    newsUrl VARCHAR,
+    newstitle TEXT,
+    newsImg VARCHAR
+);

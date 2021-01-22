@@ -5,7 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { ToastController } from '@ionic/angular';
+import { ToastController, AlertController } from '@ionic/angular';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { Observable } from 'rxjs';
 
@@ -25,8 +25,10 @@ export class AppComponent {
     private menu: MenuController,
     private userAuth: AngularFireAuth,
     private toast: ToastController,
+    private alert: AlertController,
     private theme: NativeStorage
   ) {
+
     this.initializeApp();
   }
 
@@ -34,7 +36,7 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleLightContent();
       this.splashScreen.hide();
-      this.theme.getItem("THEME").then((theme)=>{
+      this.theme.getItem('THEME').then((theme) => {
         this.dark = theme;
       });
     });
