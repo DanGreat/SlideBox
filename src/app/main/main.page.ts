@@ -216,7 +216,7 @@ export class MainPage implements OnInit {
   }
 
   addNews(url: string, title: string, img: string ) {
-    this.databaseService.addNews(url, title, img);
+    // this.databaseService.addNews(url, title, img);
     this.addedNews();
   }
 
