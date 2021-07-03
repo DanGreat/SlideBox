@@ -14,60 +14,60 @@
     src: url("https://fonts.googleapis.com/css?family=Montserrat");
     font-family: 'Montserrat' sans-serif;
 }
-:root{
-    ion-card{
-        box-shadow: 0 0 9px -3px #636161;
-    }
-    ion-content{
-        font-family: 'Montserrat', sans-serif;
-        -webkit-user-select: text;
-        user-select: text;
-        --offset-top: 1px !important;
-    }
-    ion-menu ion-title{
-        color: #ffffff;
-    }
-    ion-menu ion-icon{
-        color: var(--ion-color-primary);
-    }
-    ion-menu ion-content ion-list ion-item {
-        margin-top: 10px;
-    }
-    ion-toolbar.neon{
-        --background: url(../src/assets/neon.jpg)no-repeat center;
-        height: 160px;
-    }
-    ion-toolbar.neon ion-avatar {
-        margin-top: 15px;
-        margin-left: 8px;
-        margin-bottom: 20px;
-        animation: rotating 2s linear infinite;
-        transition: all;
-    }
-    @keyframes rotating{
-        100% { transform: rotate(360deg);}
-    }
-    @-webkit-keyframes rotating{
-        100% { transform: rotate(360deg);}
-    }
-    @-moz-keyframes rotating{
-        100% { transform: rotate(360deg);}
-    }
-    ion-toggle{
-        display: block;
-        float: right;
-    }
-    *::-webkit-scrollbar{
-        display: none;
-    }
-    .alert-sub-title.sc-ion-alert-md, .alert-title.sc-ion-alert-md {
-        color: #000 !important;
-    }
-    .alert-input-group.sc-ion-alert-md, .alert-message.sc-ion-alert-md {
-        color: #212121 !important;
-    }
-    .alert-radio-label.sc-ion-alert-md{
-        color: #292929 !important;
-    }
-}
+// :root{
+//     ion-card{
+//         box-shadow: 0 0 9px -3px #636161;
+//     }
+//     ion-content{
+//         font-family: 'Montserrat', sans-serif;
+//         -webkit-user-select: text;
+//         user-select: text;
+//         --offset-top: 1px !important;
+//     }
+//     ion-menu ion-title{
+//         color: #ffffff;
+//     }
+//     ion-menu ion-icon{
+//         color: var(--ion-color-primary);
+//     }
+//     ion-menu ion-content ion-list ion-item {
+//         margin-top: 10px;
+//     }
+//     ion-toolbar.neon{
+//         --background: url(../src/assets/neon.jpg)no-repeat center;
+//         height: 160px;
+//     }
+//     ion-toolbar.neon ion-avatar {
+//         margin-top: 15px;
+//         margin-left: 8px;
+//         margin-bottom: 20px;
+//         animation: rotating 2s linear infinite;
+//         transition: all;
+//     }
+//     @keyframes rotating{
+//         100% { transform: rotate(360deg);}
+//     }
+//     @-webkit-keyframes rotating{
+//         100% { transform: rotate(360deg);}
+//     }
+//     @-moz-keyframes rotating{
+//         100% { transform: rotate(360deg);}
+//     }
+//     ion-toggle{
+//         display: block;
+//         float: right;
+//     }
+//     *::-webkit-scrollbar{
+//         display: none;
+//     }
+//     .alert-sub-title.sc-ion-alert-md, .alert-title.sc-ion-alert-md {
+//         color: #000 !important;
+//     }
+//     .alert-input-group.sc-ion-alert-md, .alert-message.sc-ion-alert-md {
+//         color: #212121 !important;
+//     }
+//     .alert-radio-label.sc-ion-alert-md{
+//         color: #292929 !important;
+//     }
+// }
 

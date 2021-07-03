@@ -15,23 +15,23 @@ export class MyNewsPage implements OnInit {
 ) { }
 
   ngOnInit() {
-     this.databaseService.getDatabaseState().subscribe(isReady => {
-       console.log('Db is ready: ', isReady);
-       if (isReady) {
-        this.loadNews();
-       }
-     });
+    //  this.databaseService.getDatabaseState().subscribe(isReady => {
+    //    console.log('Db is ready: ', isReady);
+    //    if (isReady) {
+    //     this.loadNews();
+    //    }
+    //  });
   }
 
   loadNews() {
-    this.databaseService.getAllNews().then(res => {
-      this.newsList = res;
-      console.log(res);
-      console.table(res);
-    });
+    // this.databaseService.getAllNews().then(res => {
+    //   this.newsList = res;
+    //   console.log(res);
+    //   console.table(res);
+    // });
   }
 
   deleteNews(id) {
-    this.databaseService.deleteNews(id);
+    // this.databaseService.deleteNews(id);
   }
 }

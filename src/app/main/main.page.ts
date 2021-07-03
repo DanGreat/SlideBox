@@ -4,7 +4,7 @@ import { AlertController, ToastController, LoadingController} from '@ionic/angul
 import { PopoverController } from '@ionic/angular';
 import { PopoverComponent } from '../../components/popover/popover.component';
 import { BookmarkService } from 'src/services/bookmark.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 import { NewsModalComponent } from '../../components/news-modal/news-modal.component';
 // import { IonicSelectableComponent } from 'ionic-selectable';
 import { APIService } from '../../services/api.service';
@@ -63,10 +63,10 @@ export class MainPage implements OnInit {
               }
 
   ngOnInit() {
+    this.popover.dismiss();
     this.platform.ready().then(() => {
       this.getNews(this.country);
       this.countryService.country$.subscribe((country) => {
-        this.popover.dismiss();
         this.loading();
         this.getNews(country);
         this.country = country;
@@ -92,7 +92,7 @@ export class MainPage implements OnInit {
     (error) => {
       if (error.ok === false) {
         if (this.loader) { this.loader.dismiss(); }
-        this.networkFailure();
+        // this.networkFailure();
       }
     });
   }

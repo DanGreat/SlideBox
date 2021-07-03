@@ -9,6 +9,9 @@ export class APIService {
 
   private API_KEY: any = '4f6e3e854d414e3b92fdac5c96c04102';
 
+
+  private CORS_RESOLVER = 'https://cors-anywhere.herokuapp.com/';
+
   httpOption = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -22,7 +25,7 @@ export class APIService {
 
   popularNews(page: number, country: string) {
     // tslint:disable-next-line: max-line-length
-    return this.http.get(`https://newsapi.org/v2/top-headlines?country=${country}&pageSize=8&page=${page}&apiKey=4f6e3e854d414e3b92fdac5c96c04102`, this.httpOption);
+    return this.http.get(`https://newsapi.org/v2/top-headlines?country=${country}&pageSize=8&page=${page}&apiKey=4f6e3e854d414e3b92fdac5c96c04102`);
   }
 
   loadCategoryNews(page: number, category: string, country: string) {

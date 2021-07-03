@@ -79,22 +79,22 @@
 .dark-theme {
   --ion-background-color: #000000;
   --ion-background-color-rgb: 0,0,0;
-  ion-toolbar{
-    --background: #000000;
-  }
-  ion-card{
-    background-color: #1c1c1c;
-    box-shadow: none !important;
-  }
-  ion-menu ion-content{
-    --background: #1c1c1c; 
-  }
-  ion-item{
-    --background: none;
-  }
-  ion-fab-button{
-    --background: #1c1c1c;
-  }
+  // ion-toolbar{
+  //   --background: #000000;
+  // }
+  // ion-card{
+  //   background-color: #1c1c1c;
+  //   box-shadow: none !important;
+  // }
+  // ion-menu ion-content{
+  //   --background: #1c1c1c; 
+  // }
+  // ion-item{
+  //   --background: none;
+  // }
+  // ion-fab-button{
+  //   --background: #1c1c1c;
+  // }
   --ion-color-primary: #24d6ea;
   --ion-text-color: #ffffff;
   --ion-text-color-rgb: 255,255,255;

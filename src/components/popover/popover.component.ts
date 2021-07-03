@@ -32,7 +32,7 @@ export class PopoverComponent implements OnInit {
   ngOnInit() {
   }
 
-  goto(page: string,) {
+  goto(page: string) {
     if (page === 'signup') {
       this.popCtrl.dismiss();
       this.userAuth.auth.signOut().then(() => {
