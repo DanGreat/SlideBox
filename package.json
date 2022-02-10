@@ -46,7 +46,7 @@
     "core-js": "^2.5.4",
     "firebase": "^6.0.2",
     "ionic-selectable": "^4.4.0",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",
     "uk.co.workingedge.cordova.plugin.sqliteporter": "1.1.0",
